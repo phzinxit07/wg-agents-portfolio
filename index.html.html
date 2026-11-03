@@ -22,12 +22,7 @@
                             900: '#1e1b4b',
                             accent: '#818cf8',
                             purple: '#a855f7'
-                        },
-                        brand: { 50:'#EEF0E2', 100:'#DDE1CB', 300:'#7A6C2C', 400:'#9B8A3E', 500:'#1E3227', 600:'#1E3227', 700:'#2A4435', 900:'#1E3227', accent:'#3F5447', purple:'#9B8A3E' },
-                        slate: { 200:'#1E3227', 300:'#3F5447', 400:'#3F5447', 500:'#5A6E60', 700:'#9AA48A', 800:'#AEB69A', 900:'#C0C5AB', 950:'#B8BEA3' },
-                        darkbg: '#CBCFB8',
-                        cardbg: '#111827',
-                        cardborder: '#1f2937'
+                        }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -49,7 +44,7 @@
             if (reduce) return;
             var root = document.documentElement;
             root.classList.add('hh-pre');
-            setTimeout(function () { root.classList.remove('hh-pre'); }, 4500); /* rede de segurança */
+            setTimeout(function () { root.classList.remove('hh-pre'); }, 4500);
         })();
     </script>
 
@@ -112,7 +107,6 @@
 
         /* =====================================================
            HERO — Sage Studio (vídeo + vidro + entrada animada)
-           Unidade: 1 "s" = 1px do artboard 2048x1152 * --s
            ===================================================== */
         .hh {
             --s: max(0.55px, min(calc(100vw / 2048), calc(100vh / 1152)));
@@ -131,7 +125,6 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* --- Mão / vídeo --- */
         .hh-hand { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
         .hh-media {
             --mw: min(100vw, 200svh);
@@ -150,14 +143,7 @@
             object-fit: cover; object-position: 50% 100%;
             display: block; opacity: 0;
         }
-        @media (min-aspect-ratio: 2/1) {
-            .hh-media {
-                -webkit-mask-image: linear-gradient(90deg, transparent, #000 calc(120 * var(--s)), #000 calc(100% - 120 * var(--s)), transparent);
-                        mask-image: linear-gradient(90deg, transparent, #000 calc(120 * var(--s)), #000 calc(100% - 120 * var(--s)), transparent);
-            }
-        }
 
-        /* --- Palco (copy | mão | cards) --- */
         .hh-stage {
             position: absolute; inset: 0; z-index: 2;
             display: grid;
@@ -203,7 +189,6 @@
         .hh-btn.is-ghost:hover { background: rgba(30, 50, 39, .08); }
         .hh-btn svg { width: .8em; height: .8em; }
 
-        /* --- Cards de vidro --- */
         .hh-cards { display: flex; flex-direction: column; gap: calc(24 * var(--s)); }
         .hh-card {
             box-sizing: border-box;
@@ -212,8 +197,7 @@
             border-radius: calc(20 * var(--s));
             background: rgba(222, 226, 206, .42);
             border: 1px solid rgba(30, 50, 39, .22);
-            -webkit-backdrop-filter: blur(calc(14 * var(--s)));
-                    backdrop-filter: blur(calc(14 * var(--s)));
+            backdrop-filter: blur(calc(14 * var(--s)));
             display: flex; flex-direction: column; justify-content: space-between;
             color: var(--hh-ink);
         }
@@ -233,91 +217,83 @@
         }
         .hh-unit.is-gold { color: var(--hh-gold); }
 
-        /* --- Estado inicial da entrada (removido por JS) --- */
         .hh-pre .hh-anim { opacity: 0; }
         .hh-pre .hh-line > span { transform: translateY(108%); }
         .hh-pre .hh-dot { clip-path: circle(0 at 50% 50%); }
 
-        /* --- Paisagem abaixo de 1200px: grade fluida copy | mão | cards --- */
-        @media (max-width: 1199px) and (min-aspect-ratio: 1/1) {
-            .hh-stage {
-                grid-template-columns: minmax(0, 1fr) minmax(0, 26vw) minmax(0, 1fr);
-                padding: var(--hh-header) 24px 24px;
-            }
-            .hh-line > span { white-space: normal; }
-            .hh-copy { max-width: 100%; }
-            .hh-h1 { font-size: max(26px, calc(56 * var(--s))); }
-            .hh-p { font-size: max(13px, calc(26 * var(--s))); }
-            .hh-eyebrow { font-size: max(12px, calc(22 * var(--s))); }
-            .hh-btn { font-size: max(13px, calc(23 * var(--s))); height: max(40px, calc(68 * var(--s))); padding: 0 max(18px, calc(36 * var(--s))); }
-            .hh-card { width: max(118px, calc(222 * var(--s))); height: max(88px, calc(160 * var(--s))); padding: max(10px, calc(22 * var(--s))); }
-            .hh-label { font-size: max(9px, calc(15 * var(--s))); }
-            .hh-num { font-size: max(30px, calc(62 * var(--s))); }
-            .hh-unit { font-size: max(8.5px, calc(13 * var(--s))); }
-        }
-
-        /* --- Retrato: copy, cards em linha, mão preenchendo o resto --- */
-        @media (max-aspect-ratio: 1/1) {
+        /* --- Ajuste Otimizado para Dispositivos Móveis (Celular) --- */
+        @media (max-aspect-ratio: 1/1), (max-width: 768px) {
             .hh {
-                --s: calc(100vw / 700);
-                height: auto; min-height: 100vh; min-height: 100svh;
-                display: flex; flex-direction: column;
+                height: 100vh;
+                height: 100svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
-            .hh-stage { position: static; display: contents; }
-            .hh-copy {
-                order: 1; position: relative; z-index: 2; max-width: none;
-                padding: calc(var(--hh-header) + 28px) 24px 0;
+            .hh-hand { 
+                position: absolute; 
+                inset: 0; 
+                z-index: 0; 
+                width: 100%; 
+                height: 100%; 
             }
-            .hh-cards {
-                order: 2; position: relative; z-index: 2;
-                flex-direction: row; gap: 10px; padding: 26px 24px 18px;
+            .hh-media { 
+                width: 100%; 
+                height: 100%; 
+                position: absolute; 
+                inset: 0; 
             }
-            .hh-hand { order: 3; position: relative; inset: auto; flex: 1 1 auto; min-height: 42vh; min-height: 42svh; }
-            .hh-media { width: auto; height: 100%; aspect-ratio: 1920 / 1084; }
+            .hh-v {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .hh-stage { 
+                position: relative; 
+                z-index: 2; 
+                display: flex; 
+                flex-direction: column; 
+                justify-content: center; 
+                padding: 24px; 
+                height: 100%;
+                background: rgba(9, 13, 22, 0.65);
+                backdrop-filter: blur(6px);
+            }
+            .hh-copy { 
+                max-width: 100%; 
+                text-align: left; 
+            }
+            .hh-h1 { 
+                font-size: 2.1rem; 
+                line-height: 1.15; 
+            }
             .hh-line > span { white-space: normal; }
-            .hh-eyebrow { font-size: max(12px, calc(22 * var(--s))); }
-            .hh-h1 { font-size: max(28px, calc(56 * var(--s))); }
-            .hh-p { font-size: max(15px, calc(26 * var(--s))); max-width: 34em; }
-            .hh-cta { margin-top: 26px; }
-            .hh-btn { font-size: max(14px, calc(23 * var(--s))); height: max(46px, calc(68 * var(--s))); padding: 0 max(20px, calc(36 * var(--s))); }
-            .hh-card {
-                flex: 1 1 0; min-width: 0; width: auto; height: auto;
-                min-height: max(112px, calc(190 * var(--s)));
-                padding: max(10px, calc(20 * var(--s))) max(10px, calc(18 * var(--s)));
-                border-radius: max(14px, calc(26 * var(--s)));
+            .hh-p { 
+                font-size: 1rem; 
+                margin: 16px 0 0; 
             }
-            .hh-label { font-size: max(9px, calc(17 * var(--s))); letter-spacing: .1em; }
-            .hh-num { font-size: max(28px, calc(60 * var(--s))); }
-            .hh-unit { font-size: max(8.5px, calc(15 * var(--s))); letter-spacing: .12em; }
-        }
-        @media (max-aspect-ratio: 1/1) and (max-width: 520px) {
-            .hh-label svg { display: none; }
-        }
-
-        /* --- Movimento reduzido: sem entrada, sem transições, sem vídeo --- */
-        @media (prefers-reduced-motion: reduce) {
-            .hh *, .hh *::before, .hh *::after { transition: none !important; animation: none !important; }
-            .hh-hand { display: none; }
+            .hh-cta { 
+                justify-content: flex-start; 
+                margin-top: 24px; 
+            }
+            .hh-btn {
+                font-size: 0.9rem;
+                height: 50px;
+                padding: 0 24px;
+            }
+            .hh-cards { 
+                display: none; 
+            }
         }
     </style>
     <style id="sage-theme">
-        /* Identidade Sage em todo o site (mesmas cores do hero) */
         body.sage { background:#CBCFB8; color:#1E3227; }
-        .sage .glass-panel { background-color:rgba(222,226,206,.5); border-color:rgba(30,50,39,.18);
-            background-image:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px), rgba(255,255,255,.4), transparent 70%); }
+        .sage .glass-panel { background-color:rgba(222,226,206,.5); border-color:rgba(30,50,39,.18); }
         .sage .glass-nav { background:rgba(203,207,184,.72); border-bottom:1px solid rgba(30,50,39,.14); }
-        .sage .text-white { color:#1E3227; }
-        .sage .text-white.bg-brand-600, .sage .text-white.bg-gradient-to-r, .sage .text-white.bg-gradient-to-tr,
-        .sage .text-white.bg-emerald-500, .sage .bg-brand-600 .text-white { color:#EEF0E2; }
-        .sage header .bg-clip-text { background-image:none; -webkit-text-fill-color:#1E3227; color:#1E3227; }
-        .sage header a.bg-gradient-to-r { background-image:none; background-color:#1E3227; box-shadow:none; }
         .sage ::-webkit-scrollbar-track { background:#CBCFB8; }
         .sage ::-webkit-scrollbar-thumb { background:#9AA48A; }
-        .sage footer, .sage #caseModal .glass-panel { color:#1E3227; }
-        /* o hero sai de cena suavemente com a rolagem */
         .hh-stage { transform:translate3d(0,calc(var(--hp,0) * -56px),0); opacity:calc(1 - var(--hp,0) * .85); }
         .hh-hand { transform:translate3d(0,calc(var(--hp,0) * 36px),0) scale(calc(1 + var(--hp,0) * .05)); }
-        .hh-w { display:inline-block; }
     </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
@@ -330,48 +306,44 @@
                     W
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brand-accent">WG AGENTS</span>
+                    <span class="text-xl font-extrabold tracking-wider text-white">WG AGENTS</span>
                     <span class="block text-[10px] text-brand-400 font-semibold tracking-widest uppercase">Software House</span>
                 </div>
             </a>
 
-            <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a data-hh="nav" href="#sobre" class="hh-anim hover:text-brand-400 transition-colors">Sobre</a>
-                <a data-hh="nav" href="#cases" class="hh-anim hover:text-brand-400 transition-colors">Cases & Projetos</a>
-                <a data-hh="nav" href="#stacks" class="hh-anim hover:text-brand-400 transition-colors">Stacks</a>
-                <a data-hh="nav" href="#diferenciais" class="hh-anim hover:text-brand-400 transition-colors">Diferenciais</a>
-                <a data-hh="nav" href="#contato" class="hh-anim hover:text-brand-400 transition-colors">Cotação</a>
+                <a href="#sobre" class="hover:text-brand-400 transition-colors">Sobre</a>
+                <a href="#cases" class="hover:text-brand-400 transition-colors">Cases & Projetos</a>
+                <a href="#stacks" class="hover:text-brand-400 transition-colors">Stacks</a>
+                <a href="#diferenciais" class="hover:text-brand-400 transition-colors">Diferenciais</a>
+                <a href="#contato" class="hover:text-brand-400 transition-colors">Cotação</a>
             </nav>
 
             <div class="hidden md:flex items-center gap-4">
-                <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="hh-anim px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
-                    <i class="fab me-1 fa-whatsapp text-lg"></i> Falar com Dev
+                <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> Falar com Dev
                 </a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="hh-anim md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
+            <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 pt-4 pb-6 space-y-3">
             <a href="#sobre" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Sobre</a>
             <a href="#cases" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Cases & Projetos</a>
             <a href="#stacks" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Stacks</a>
             <a href="#diferenciais" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Diferenciais</a>
             <a href="#contato" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Cotação Rápida</a>
-            <a href="https://wa.me/5585999999999?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="w-full mt-2 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-center block">
+            <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents." target="_blank" class="w-full mt-2 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-center block">
                 <i class="fab fa-whatsapp me-2"></i> WhatsApp Direct
             </a>
         </div>
     </header>
 
-    <!-- HERO SECTION (Sage Studio) -->
+    <!-- HERO SECTION -->
     <section id="sobre" class="hh" aria-label="Apresentação da Wg Agents">
-        <!-- Vídeo de fundo: dois elementos para o crossfade do loop -->
         <div class="hh-hand" aria-hidden="true">
             <div class="hh-media" id="hhMedia">
                 <video class="hh-v" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e6d15706-f42b-400d-beda-75840834e8bc.mp4" muted playsinline preload="auto" tabindex="-1" disablepictureinpicture disableremoteplayback></video>
@@ -432,7 +404,7 @@
         </div>
     </section>
 
-    <!-- STACKS & TECNOLOGIAS -->
+    <!-- STACKS -->
     <section id="stacks" class="py-20 bg-slate-950/60 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -441,7 +413,6 @@
                 <p class="text-slate-400 mt-4 text-sm sm:text-base">Utilizamos as ferramentas mais conceituadas do mercado para garantir velocidade, integridade e SEO impecável.</p>
             </div>
 
-            <!-- Stacks Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
                     <i class="fab fa-react text-3xl text-cyan-400 mb-3 group-hover:scale-110 transition-transform"></i>
@@ -460,7 +431,7 @@
                 </div>
                 <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
                     <i class="fas fa-database text-3xl text-indigo-400 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">PostgreSQL / Supabase</h3>
+                    <h3 class="font-bold text-sm text-white">PostgreSQL</h3>
                     <span class="text-[11px] text-slate-400">Banco de Dados Relacional</span>
                 </div>
                 <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
@@ -468,36 +439,11 @@
                     <h3 class="font-bold text-sm text-white">Tailwind CSS</h3>
                     <span class="text-[11px] text-slate-400">Styling Estilizado</span>
                 </div>
-                <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
-                    <i class="fas fa-robot text-3xl text-emerald-400 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">Playwright</h3>
-                    <span class="text-[11px] text-slate-400">E2E Scraping & Testes</span>
-                </div>
-                <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
-                    <i class="fab fa-node-js text-3xl text-green-500 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">Node.js</h3>
-                    <span class="text-[11px] text-slate-400">Runtime Back-End</span>
-                </div>
-                <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
-                    <i class="fas fa-bolt text-3xl text-orange-400 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">Astro / SSG</h3>
-                    <span class="text-[11px] text-slate-400">Ultra-Fast Static Sites</span>
-                </div>
-                <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
-                    <i class="fab fa-vuejs text-3xl text-emerald-500 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">Vue.js 3 / Vite</h3>
-                    <span class="text-[11px] text-slate-400">Reatividade Leve</span>
-                </div>
-                <div class="glass-panel p-5 rounded-xl text-center border border-slate-800 hover:border-brand-500/50 transition-all group">
-                    <i class="fas fa-cloud text-3xl text-amber-500 mb-3 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="font-bold text-sm text-white">Cloudflare Edge</h3>
-                    <span class="text-[11px] text-slate-400">CDN & WAF Global</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- CASES & PROJETOS SELECIONADOS -->
+    <!-- CASES -->
     <section id="cases" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -505,310 +451,42 @@
                     <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Portfólio de Cases</span>
                     <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Projetos de Alto Impacto</h2>
                 </div>
-
-                <!-- Filter Tabs -->
-                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="projectFilter">
-                    <button data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-brand-600 text-white transition-all">Todos (7)</button>
-                    <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-400 hover:text-white border border-slate-800 transition-all">Websites & PWAs</button>
-                    <button data-filter="saas" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-400 hover:text-white border border-slate-800 transition-all">Sistemas & CRM</button>
-                    <button data-filter="catalogo" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-400 hover:text-white border border-slate-800 transition-all">Portais & Catálogos</button>
-                </div>
             </div>
 
-            <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
-                
-                <!-- Project 1: Barbearia Imperium -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="web">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Beleza Masculina</span>
-                            <span class="px-2.5 py-1 rounded-full bg-brand-900/60 border border-brand-500/30 text-[10px] text-brand-300 font-medium">PWA Web</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Barbearia Imperium</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Plataforma web de agendamentos em tempo real com seleção de profissionais e lembretes automatizados via WhatsApp Cloud API.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Next.js 14</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Supabase</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">WhatsApp API</span>
-                        </div>
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">Beleza & Serviços</span>
+                        <h3 class="text-xl font-bold text-white mt-2 mb-2">Barbearia Imperium</h3>
+                        <p class="text-slate-400 text-sm mb-4">Plataforma web de agendamentos em tempo real com lembretes automáticos via WhatsApp.</p>
                     </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('barbearia')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
+                    <button onclick="openModal('barbearia')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 transition-all">Ver Detalhes</button>
                 </div>
 
-                <!-- Project 2: BellaVita Estética -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="web">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-brand-purple uppercase tracking-wider">Estética & Saúde</span>
-                            <span class="px-2.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-[10px] text-purple-300 font-medium">Landing Page SSG</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">BellaVita Estética</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Landing page focada em conversão extrema para tráfego pago (Ads) com score 100 no Google PageSpeed e carregamento ultrarrápido.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Astro</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">React</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Vercel Edge</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('bellavita')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 3: AutoPeças Fortaleza -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="catalogo">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">Varejo Automotivo</span>
-                            <span class="px-2.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-[10px] text-cyan-300 font-medium">Catálogo Inteligente</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">AutoPeças Fortaleza</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Catálogo com motor de busca rápida para mais de 50.000 SKUs filtrados por modelo e ano do veículo, sem peso de e-commerce tradicional.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">React</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Meilisearch</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">PostgreSQL</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('autopecas')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 4: Clinimed Saúde -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="catalogo">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Saúde Multidisciplinar</span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[10px] text-emerald-300 font-medium">Portal Corporativo</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Clinimed Saúde</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Portal médico corporativo com mapa interativo de unidades, filtro de especialidades médicas e conformidade rigorosa com a LGPD.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Next.js App Router</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Prisma ORM</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">PostgreSQL</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('clinimed')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 5: UrbanCraft Marcenaria -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="web">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Móveis Planejados</span>
-                            <span class="px-2.5 py-1 rounded-full bg-amber-950/60 border border-amber-500/30 text-[10px] text-amber-300 font-medium">Vitrine Interativa</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">UrbanCraft Marcenaria</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Vitrine virtual minimalista com galeria interativa de projetos em HD entregues via CDN global e formulário intuitivo de briefing.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Vue.js 3</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Vite</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Cloudflare CDN</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('urbancraft')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 6: FitZone Academia -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between" data-category="web">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold text-rose-400 uppercase tracking-wider">Fitness & Wellness</span>
-                            <span class="px-2.5 py-1 rounded-full bg-rose-950/60 border border-rose-500/30 text-[10px] text-rose-300 font-medium">Portal de Planos</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">FitZone Academia</h3>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Aplicação web com tabela dinâmica comparativa de matrículas, grade de horários ao vivo e tour virtual pelas instalações.</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">React</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">TypeScript</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Stripe API</span>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openModal('fitzone')" class="w-full py-2.5 rounded-xl glass-panel text-slate-200 hover:text-white font-semibold text-xs border border-slate-700 hover:border-brand-500/50 hover:bg-brand-600/20 transition-all flex items-center justify-center gap-2">
-                            <span>Ver Detalhes Técnicos</span> <i class="fas fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 7: GBLeads Pro (Flagship / Project Autoral) -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl shadow-brand-500/10 md:col-span-2 lg:col-span-3 transition-all duration-300 glow-effect" data-category="saas">
-                    <div class="p-8">
-                        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase tracking-widest shadow-md">
-                                    <i class="fas fa-star text-yellow-300 me-1"></i> Projeto Flagship Autoral
-                                </span>
-                                <span class="text-xs font-semibold text-slate-400">Prospecção B2B & CRM</span>
-                            </div>
-                            <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs text-brand-300 font-mono">Desktop & Backend Ecosystem</span>
-                        </div>
-
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">GBLeads Pro — Sistema de Varredura Regional & CRM</h3>
-                        <p class="text-slate-300 text-base mb-6 leading-relaxed max-w-4xl">
-                            Software autoral avançado projetado para busca em tempo real de empresas locais sem presença digital. Apresenta arquitetura em 5 abas operacionais (*Empresas Livres, Selecionadas, Projetando, Finalizados e Estatísticas Financeiras*), auto-save em SQLite/PostgreSQL e extração automatizada sem custos de API externa.
-                        </p>
-
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                            <div class="glass-panel p-3 rounded-lg border border-slate-800">
-                                <span class="block text-xs text-slate-400">Varredura Regional</span>
-                                <strong class="text-sm text-white">Nicho & Localidade</strong>
-                            </div>
-                            <div class="glass-panel p-3 rounded-lg border border-slate-800">
-                                <span class="block text-xs text-slate-400">Workflow</span>
-                                <strong class="text-sm text-white">5 Abas Integradas</strong>
-                            </div>
-                            <div class="glass-panel p-3 rounded-lg border border-slate-800">
-                                <span class="block text-xs text-slate-400">Motor de Extração</span>
-                                <strong class="text-sm text-white">Playwright Headless</strong>
-                            </div>
-                            <div class="glass-panel p-3 rounded-lg border border-slate-800">
-                                <span class="block text-xs text-slate-400">Persistência</span>
-                                <strong class="text-sm text-white">SQLite Auto-Save</strong>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-slate-300 font-mono">Python 3.12</span>
-                                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-slate-300 font-mono">Playwright</span>
-                                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-slate-300 font-mono">CustomTkinter</span>
-                                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-slate-300 font-mono">SQLite / PostgreSQL</span>
-                                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-slate-300 font-mono">Pandas</span>
-                            </div>
-
-                            <button onclick="openModal('gbleads')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent text-white font-bold text-xs hover:opacity-90 transition-all flex items-center gap-2">
-                                <span>Ver Arquitetura do Sistema</span> <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- DIFERENCIAIS DA WG AGENTS -->
-    <section id="diferenciais" class="py-24 bg-slate-950/70 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Nossos Pilar Técnicos</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Engenharia sem Compromissos</h2>
-                <p class="text-slate-400 mt-4 text-sm sm:text-base">Garantimos a entrega de produtos digitais alinhados às melhores práticas de arquitetura de software.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-panel p-8 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Código Limpo</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Arquitetura desacoplada em camadas (UI, Services, Data Access) que facilita futuras manutenções e escalabilidade contínua.</p>
-                </div>
-
-                <div class="glass-panel p-8 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Foco em Conversão</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Interfaces projetadas com psicologia de consumo, CTAs estrategicamente posicionados e fluxo direto para o fechamento de vendas.</p>
-                </div>
-
-                <div class="glass-panel p-8 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Segurança & Persistência</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Tratamento rigoroso de erros, rotinas de auto-save contra perdas de dados e proteção ativa contra vulnerabilidades web (SQLi, XSS).</p>
-                </div>
-
-                <div class="glass-panel p-8 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-3">Ecossistemas Híbridos</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Domínio completo tanto no desenvolvimento de sites vitrine institucionais quanto em automações desktop de alta performance.</p>
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border-2 border-brand-500/60 shadow-xl md:col-span-2 lg:col-span-3 p-8 glow-effect">
+                    <span class="px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase tracking-widest">⭐ Projeto Flagship Autoral</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-3 mb-3">GBLeads Pro — Sistema de Varredura Regional & CRM</h3>
+                    <p class="text-slate-300 text-base mb-6">Software avançado para busca em tempo real de empresas locais sem presença digital no Google Maps, com funil de vendas em 5 abas e auto-save.</p>
+                    <button onclick="openModal('gbleads')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent text-white font-bold text-xs">Ver Arquitetura</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SIMULADOR / FORMULÁRIO DE COTAÇÃO -->
+    <!-- CONTATO -->
     <section id="contato" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
-                <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-600/20 rounded-full blur-3xl pointer-events-none"></div>
-
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl">
                 <div class="text-center mb-10">
                     <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Atendimento Direto</span>
                     <h2 class="text-3xl font-bold text-white mt-2">Simule seu Projeto com a Wg Agents</h2>
-                    <p class="text-slate-400 text-sm mt-2">Preencha o formulário abaixo para gerar uma mensagem formatada direto no nosso WhatsApp oficial.</p>
                 </div>
-
                 <form id="quoteForm" class="space-y-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Seu Nome / Empresa</label>
-                            <input type="text" id="quoteName" required placeholder="Ex: João da Barbearia Imperium" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Seu Nicho de Atuação</label>
-                            <input type="text" id="quoteNiche" required placeholder="Ex: Estética, Barbearia, Automotivo..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                        </div>
+                        <input type="text" id="quoteName" required placeholder="Seu Nome / Empresa" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+                        <input type="text" id="quoteNiche" required placeholder="Seu Nicho de Atuação" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Tipo de Solução Desejada</label>
-                            <select id="quoteType" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                                <option value="Website Institucional / Vitrine">Website Institucional / Vitrine</option>
-                                <option value="Landing Page de Alta Conversão">Landing Page de Alta Conversão</option>
-                                <option value="Catálogo Digital de Produtos">Catálogo Digital de Produtos</option>
-                                <option value="Sistema SaaS / Desktop Sob Medida">Sistema SaaS / Desktop Sob Medida</option>
-                                <option value="Automação de Prospecção / Scraping">Automação de Prospecção / Scraping</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Prazo Estimado de Entrega</label>
-                            <select id="quoteDeadline" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
-                                <option value="Urgente (em até 7 dias)">Urgente (em até 7 dias)</option>
-                                <option value="Padrão (15 a 30 dias)">Padrão (15 a 30 dias)</option>
-                                <option value="Planejamento Futuro">Planejamento Futuro</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Detalhes Adicionais do Projeto</label>
-                        <textarea id="quoteDetails" rows="3" placeholder="Descreva brevemente sua necessidade ou objetivo principal..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-base hover:opacity-90 transition-all shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-base flex items-center justify-center gap-2">
                         <i class="fab fa-whatsapp text-xl"></i> Enviar Proposta Via WhatsApp
                     </button>
                 </form>
@@ -817,503 +495,36 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-                <!-- Brand Info -->
-                <div class="md:col-span-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-purple flex items-center justify-center text-white font-bold text-lg">
-                            W
-                        </div>
-                        <span class="text-xl font-extrabold text-white">WG AGENTS</span>
-                    </div>
-                    <p class="text-slate-400 text-sm max-w-sm mb-6 leading-relaxed">
-                        Há mais de 4 anos transformando a presença digital de empresas com engenharia de software de alta autoridade, código limpo e automação comercial.
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-white hover:border-brand-500 flex items-center justify-center transition-all">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="https://wa.me/5585999999999" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500 flex items-center justify-center transition-all">
-                            <i class="fab fa-whatsapp text-lg"></i>
-                        </a>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-white hover:border-brand-purple flex items-center justify-center transition-all">
-                            <i class="fab fa-github text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Fast Links -->
-                <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Links Rápidos</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#sobre" class="hover:text-brand-400 transition-colors">Sobre a Wg Agents</a></li>
-                        <li><a href="#cases" class="hover:text-brand-400 transition-colors">Cases de Sucesso</a></li>
-                        <li><a href="#stacks" class="hover:text-brand-400 transition-colors">Tecnologias Utilizadas</a></li>
-                        <li><a href="#diferenciais" class="hover:text-brand-400 transition-colors">Pilares de Código</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Atendimento</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li class="flex items-center gap-2"><i class="fas fa-envelope text-brand-400"></i> contato@wgagents.com</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-400"></i> Fortaleza, Ceará - BR</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-clock text-brand-400"></i> Seg - Sex: 08:00 às 18:00</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; 2026 Wg Agents. Todos os direitos reservados. Engenharia de Software sem "baba".</p>
-                <p>Desenvolvido com Next.js & Tailwind CSS Spirit</p>
-            </div>
-        </div>
+    <footer class="bg-slate-950 border-t border-slate-800 pt-12 pb-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Wg Agents. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- CASE DETAILS MODAL -->
+    <!-- MODAL -->
     <div id="caseModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-slate-700 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl focus:outline-none">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="modalContent">
-                <!-- Dynamic Content Injected Here -->
-            </div>
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-slate-700 p-6 sm:p-8 relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT FOR INTERACTIVITY -->
     <script>
-        // Data for Project Modals
         const projectsData = {
-            barbearia: {
-                title: "Barbearia Imperium",
-                niche: "Beleza Masculina / Serviços",
-                stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Supabase", "WhatsApp Cloud API"],
-                desafio: "Eliminar gargalos no atendimento presencial, agendamentos manuais e perdas de horários com cancelamentos sem aviso prévio.",
-                solucao: "Desenvolvimento de um PWA responsivo com sistema de agendamento em tempo real, escolha de barbeiro e envio de lembrete automático via API oficial do WhatsApp."
-            },
-            bellavita: {
-                title: "BellaVita Estética",
-                niche: "Estética & Saúde Avançada",
-                stack: ["Astro", "React", "Tailwind CSS", "Vercel Edge CDN"],
-                desafio: "Aumentar drasticamente a taxa de conversão do tráfego pago vindo de anúncios no Meta e Google Ads.",
-                solucao: "Landing page estruturada em SSG (Static Site Generation), atingindo pontuação máxima no Google PageSpeed, imagens em WebP progressivas e CTA estratégico de alta conversão."
-            },
-            autopecas: {
-                title: "AutoPeças Fortaleza",
-                niche: "Varejo Automotivo / Peças",
-                stack: ["React", "Node.js", "Meilisearch", "PostgreSQL"],
-                desafio: "Permitir a localização instantânea em um estoque com mais de 50.000 SKUs sem o peso ou a burocracia de um e-commerce tradicional.",
-                solucao: "Aplicação web com motor de busca indexado Meilisearch, filtrando marca, modelo e ano do veículo para gerar uma lista de cotação enviada direto ao vendedor."
-            },
-            clinimed: {
-                title: "Clinimed Saúde",
-                niche: "Saúde & Clínicas Multidisciplinares",
-                stack: ["Next.js App Router", "Prisma ORM", "PostgreSQL", "Framer Motion"],
-                desafio: "Apresentar um corpo clínico extenso e múltiplos convênios aceitos de forma intuitiva, mantendo conformidade rigorosa com a LGPD.",
-                solucao: "Portal corporativo com mapa interativo de localização, busca de médicos por especialidade, formulário criptografado e design responsivo com acessibilidade total."
-            },
-            urbancraft: {
-                title: "UrbanCraft Marcenaria",
-                niche: "Arquitetura & Móveis Planejados",
-                stack: ["Vue.js 3", "Vite", "Cloudflare CDN", "Tailwind CSS"],
-                desafio: "Exibir projetos residenciais em altíssima resolução visual sem comprometer o tempo de carregamento em redes móveis.",
-                solucao: "Galeria virtual com carregamento de mídia progressivo entregue via CDN global, organizando ambientes por abas com formulário inteligente de briefing."
-            },
-            fitzone: {
-                title: "FitZone Academia",
-                niche: "Fitness & Wellness",
-                stack: ["React", "TypeScript", "Stripe API", "Styled Components"],
-                desafio: "Reduzir a taxa de rejeição no momento de escolha de planos de matrícula e consulta de horários.",
-                solucao: "Aplicação dinâmica com tabela comparativa de planos, tour virtual interativo e checkout transparente via gateway integrado Stripe."
-            },
-            gbleads: {
-                title: "GBLeads Pro — Sistema de Varredura & CRM",
-                niche: "Prospecção B2B & Automação Comercial (Flagship Autoral)",
-                stack: ["Python 3.12", "Playwright Headless", "CustomTkinter", "SQLite / PostgreSQL", "Pandas"],
-                desafio: "Identificar em tempo real estabelecimentos locais em determinada região e nicho (ex: barbearias em Fortaleza) que não possuem site cadastrado no Google Maps e gerenciar seu funil comercial.",
-                solucao: "Software completo com 5 abas operacionais (Empresas Livres, Selecionadas, Projetando, Finalizados e Financeiro), persistência local auto-save, relatório em tempo real e extração automatizada sem custos de APIs pagas."
-            }
+            barbearia: { title: "Barbearia Imperium", niche: "Serviços", desafio: "Eliminar gargalos em agendamentos.", solucao: "PWA com agendamento via WhatsApp." },
+            gbleads: { title: "GBLeads Pro", niche: "Automação Comercial", desafio: "Achar leads sem site.", solucao: "Sistema local com Python e Playwright." }
         };
-
-        // Modal Controls
-        function openModal(projectId) {
-            const project = projectsData[projectId];
-            if (!project) return;
-
-            const modalContent = document.getElementById('modalContent');
-            modalContent.innerHTML = `
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">${project.niche}</span>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">${project.title}</h3>
-                
-                <div class="space-y-4 text-sm text-slate-300">
-                    <div>
-                        <strong class="block text-white font-semibold mb-1"> O Desafio Técnico:</strong>
-                        <p class="text-slate-400">${project.desafio}</p>
-                    </div>
-                    <div>
-                        <strong class="block text-white font-semibold mb-1"> A Solução Wg Agents:</strong>
-                        <p class="text-slate-400">${project.solucao}</p>
-                    </div>
-                </div>
-
-                <div class="mt-6 pt-4 border-t border-slate-800">
-                    <strong class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Stack Tecnológica Utilizada:</strong>
-                    <div class="flex flex-wrap gap-2">
-                        ${project.stack.map(tech => `<span class="px-2.5 py-1 rounded bg-slate-800 text-xs text-brand-300 font-mono border border-slate-700">${tech}</span>`).join('')}
-                    </div>
-                </div>
-
-                <div class="mt-8">
-                    <a href="https://wa.me/5585999999999?text=Gostaria+de+saber+mais+sobre+a+tecnologia+do+case+${encodeURIComponent(project.title)}" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent text-white font-bold text-sm text-center block hover:opacity-90 transition-all">
-                        Solicitar Projeto Semelhante
-                    </a>
-                </div>
-            `;
-
+        function openModal(id) {
+            const p = projectsData[id];
+            document.getElementById('modalContent').innerHTML = `<h3 class="text-2xl font-bold text-white mb-2">${p.title}</h3><p class="text-slate-400 mb-4">${p.solucao}</p>`;
             document.getElementById('caseModal').classList.remove('hidden');
         }
+        function closeModal() { document.getElementById('caseModal').classList.add('hidden'); }
 
-        function closeModal() {
-            document.getElementById('caseModal').classList.add('hidden');
-        }
-
-        // Close Modal on Outside Click
-        document.getElementById('caseModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // Filter Functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active classes
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-brand-600', 'text-white');
-                    b.classList.add('glass-panel', 'text-slate-400');
-                });
-
-                // Add active state to clicked button
-                btn.classList.add('bg-brand-600', 'text-white');
-                btn.classList.remove('glass-panel', 'text-slate-400');
-
-                const filter = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // WhatsApp Form Handler
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('quoteName').value;
             const niche = document.getElementById('quoteNiche').value;
-            const type = document.getElementById('quoteType').value;
-            const deadline = document.getElementById('quoteDeadline').value;
-            const details = document.getElementById('quoteDetails').value;
-
-            const text = `*NOVA SOLICITAÇÃO DE ORÇAMENTO VIA PORTFÓLIO*\n\n` +
-                         `*Nome/Empresa:* ${name}\n` +
-                         `*Nicho:* ${niche}\n` +
-                         `*Tipo de Solução:* ${type}\n` +
-                         `*Prazo Estimado:* ${deadline}\n` +
-                         `*Detalhes:* ${details || 'Nenhum detalhe extra informado.'}`;
-
-            const phone = "5585999999999";
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/5585998216859?text=${encodeURIComponent(`Nome: ${name}\nNicho: ${niche}`)}`, '_blank');
         });
-    </script>
-
-    <script>
-    /* =========================================================
-       HERO — entrada (Web Animations) + vídeo em loop com crossfade
-       ========================================================= */
-    (function () {
-        var hero = document.getElementById('sobre');
-        if (!hero || !hero.classList.contains('hh')) return;
-
-        var root = document.documentElement;
-        var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduce) { root.classList.remove('hh-pre'); return; }   /* sem entrada e sem vídeo */
-
-        var media = document.getElementById('hhMedia');
-        var vids = Array.prototype.slice.call(hero.querySelectorAll('.hh-v'));
-        var XF = 1;                        /* 1s de crossfade: final -> início */
-
-        /* ---------- 1) vídeo: carrega, fade-in 0.8s, loop com crossfade ---------- */
-        vids.forEach(function (v) {
-            v.muted = true; v.defaultMuted = true; v.playsInline = true;
-            v.src = v.getAttribute('data-src');
-            v.load();
-        });
-
-        var front = vids[0], back = vids[1], crossing = false, rafId = 0, running = false;
-
-        function tryPlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-
-        var firstFrame = new Promise(function (resolve) {
-            var done = false;
-            function ok() { if (!done) { done = true; resolve(); } }
-            if (front.readyState >= 2) return ok();
-            front.addEventListener('loadeddata', ok, { once: true });
-            front.addEventListener('error', ok, { once: true });
-        });
-
-        function prime(v) {                 /* deixa o vídeo parado no 1º quadro */
-            try { v.pause(); v.currentTime = 0; } catch (e) {}
-        }
-
-        function startCross() {
-            crossing = true;
-            back.style.zIndex = 2; front.style.zIndex = 1;
-            back.style.opacity = 0;
-            try { back.currentTime = 0; } catch (e) {}
-            tryPlay(back);
-        }
-        function finishCross() {
-            front.style.opacity = 0; front.style.zIndex = 0;
-            back.style.opacity = 1;
-            prime(front);                   /* o que saiu volta ao 1º quadro, pronto p/ o próximo ciclo */
-            var t = front; front = back; back = t;
-            crossing = false;
-        }
-        function tick() {
-            if (!running) return;
-            var d = front.duration || 4;
-            var t = front.currentTime;
-            if (crossing || t >= d - XF || front.ended) {
-                if (!crossing) startCross();
-                var p = front.ended ? 1 : (t - (d - XF)) / XF;
-                if (p >= 1 || t >= d - 0.04) finishCross();
-                else back.style.opacity = Math.max(0, p);
-            }
-            rafId = requestAnimationFrame(tick);
-        }
-        function startVideo() {
-            front.style.opacity = 1; front.style.zIndex = 1; back.style.zIndex = 0;
-            prime(back);
-            tryPlay(front);
-            media.classList.add('is-on');   /* fade-in de 0.8s (transição no CSS) */
-            running = true; rafId = requestAnimationFrame(tick);
-        }
-        function stopVideo() { running = false; cancelAnimationFrame(rafId); front.pause(); back.pause(); }
-
-        /* pausa fora da tela / aba oculta, retoma ao voltar */
-        function resume() {
-            if (running) return;
-            running = true; tryPlay(front); if (crossing) tryPlay(back);
-            rafId = requestAnimationFrame(tick);
-        }
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(function (es) {
-                if (!media.classList.contains('is-on')) return;
-                es[0].isIntersecting ? resume() : stopVideo();
-            }, { threshold: 0.05 }).observe(hero);
-        }
-        document.addEventListener('visibilitychange', function () {
-            if (!media.classList.contains('is-on')) return;
-            document.hidden ? stopVideo() : resume();
-        });
-
-        /* ---------- 2) entrada: uma linha do tempo, começa com fontes + vídeo prontos ---------- */
-        function qa(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
-
-        function runEntrance() {
-            var EASE = 'cubic-bezier(.22,.8,.24,1)';
-            var EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
-            var anims = [];
-            function add(el, frames, opt) {
-                if (!el) return;
-                opt.fill = 'backwards';
-                anims.push(el.animate(frames, opt));
-            }
-
-            /* header: logo, links, CTA e burger descem do topo, em sequência */
-            var hdr = [].concat(
-                qa('header > div > a.hh-anim'),
-                qa('header nav a.hh-anim'),
-                qa('header .hh-anim:not(a):not(nav)'),
-                qa('header > div > div > a.hh-anim')
-            );
-            hdr.forEach(function (el, i) {
-                add(el, [{ opacity: 0, transform: 'translateY(-26px)' }, { opacity: 1, transform: 'none' }],
-                    { duration: 700, delay: 60 * i, easing: EASE });
-            });
-
-            /* ponto "liga" com clip circular, depois o texto */
-            add(document.getElementById('hhDot'),
-                [{ clipPath: 'circle(0 at 50% 50%)' }, { clipPath: 'circle(75% at 50% 50%)' }],
-                { duration: 520, delay: 520, easing: EASE });
-            add(document.getElementById('hhEyebrowText'),
-                [{ opacity: 0, transform: 'translateX(-12px)' }, { opacity: 1, transform: 'none' }],
-                { duration: 650, delay: 700, easing: EASE });
-
-            /* cada linha do título sobe dentro da própria máscara */
-            qa('.hh-line > span').forEach(function (el, i) {
-                add(el, [{ transform: 'translateY(108%)' }, { transform: 'translateY(0)' }],
-                    { duration: 950, delay: 820 + 140 * i, easing: EASE_OUT });
-            });
-
-            /* parágrafo e CTA assentam */
-            add(hero.querySelector('.hh-p'),
-                [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }],
-                { duration: 800, delay: 1180, easing: EASE });
-            add(hero.querySelector('.hh-cta'),
-                [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }],
-                { duration: 800, delay: 1320, easing: EASE });
-
-            /* cards de vidro sobem um após o outro */
-            qa('.hh-card').forEach(function (el, i) {
-                add(el, [{ opacity: 0, transform: 'translateY(44px)' }, { opacity: 1, transform: 'none' }],
-                    { duration: 950, delay: 1100 + 170 * i, easing: EASE_OUT });
-            });
-
-            /* as animações assumem o estado inicial; só então tiramos a classe de pré-estado */
-            root.classList.remove('hh-pre');
-
-            /* ao terminar, cancela tudo: a página volta aos estilos escritos */
-            Promise.all(anims.map(function (a) { return a.finished; }))
-                .then(function () { anims.forEach(function (a) { a.cancel(); }); })
-                .catch(function () { anims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); });
-        }
-
-        var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-        var timeout = new Promise(function (r) { setTimeout(r, 2500); });   /* nunca fica preso */
-
-        Promise.race([Promise.all([fontsReady, firstFrame]), timeout]).then(function () {
-            startVideo();
-            runEntrance();
-        });
-    })();
-    </script>
-
-    <script>
-    /* Movimento contínuo: inércia, revelações, luz no cursor, FLIP no filtro, hero ligado à rolagem */
-    (function () {
-        var EASE = 'cubic-bezier(.16,1,.3,1)';
-        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var modal = document.getElementById('caseModal');
-
-        /* luz que segue o mouse */
-        document.addEventListener('pointermove', function (e) {
-            var c = e.target.closest && e.target.closest('.glass-panel,.project-card');
-            if (!c) return;
-            var r = c.getBoundingClientRect();
-            c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-            c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-        }, { passive: true });
-
-        /* filtro da galeria com FLIP: os cards deslizam para as vagas */
-        var cards = [].slice.call(document.querySelectorAll('.project-card'));
-        document.addEventListener('click', function (e) {
-            if (!e.target.closest('.filter-btn')) return;
-            var first = new Map(cards.map(function (c) { return [c, c.getBoundingClientRect()]; }));
-            var was = cards.filter(function (c) { return c.style.display === 'none'; });
-            requestAnimationFrame(function () {
-                cards.forEach(function (c) {
-                    c.style.opacity = '';
-                    if (c.style.display === 'none' || reduce) return;
-                    var l = c.getBoundingClientRect(), f = first.get(c);
-                    if (was.indexOf(c) > -1) c.animate([{ opacity: 0, transform: 'scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: EASE });
-                    else if (f.left !== l.left || f.top !== l.top)
-                        c.animate([{ transform: 'translate(' + (f.left - l.left) + 'px,' + (f.top - l.top) + 'px)' }, { transform: 'none' }], { duration: 550, easing: EASE });
-                });
-            });
-        }, true);
-
-        if (reduce) return;
-
-        /* hero ligado à rolagem (--hp: 0 a 1) */
-        var hero = document.getElementById('sobre'), tick = false;
-        function hp() { tick = false; hero.style.setProperty('--hp', Math.min(1, scrollY / innerHeight).toFixed(3)); }
-        addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(hp); } }, { passive: true });
-
-        /* títulos: palavra por palavra (70ms) | cards: sobem em sequência */
-        var io = new IntersectionObserver(function (es) {
-            es.forEach(function (en) {
-                if (!en.isIntersecting) return;
-                io.unobserve(en.target);
-                var el = en.target;
-                if (el.dataset.rv === 'words') {
-                    [].forEach.call(el.querySelectorAll('.hh-w'), function (w, i) {
-                        w.style.opacity = '';
-                        w.animate([{ opacity: 0, transform: 'translateY(.6em)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 70 * i, easing: EASE, fill: 'backwards' });
-                    });
-                } else {
-                    var d = +el.dataset.rd || 0;
-                    el.style.opacity = '';
-                    el.animate([{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }], { duration: 850, delay: d, easing: EASE, fill: 'backwards' });
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
-        document.querySelectorAll('#stacks h2,#cases h2,#diferenciais h2,#contato h2').forEach(function (h2) {
-            var tw = document.createTreeWalker(h2, NodeFilter.SHOW_TEXT), nodes = [], n;
-            while ((n = tw.nextNode())) if (n.nodeValue.trim()) nodes.push(n);
-            nodes.forEach(function (t) {
-                var f = document.createDocumentFragment();
-                t.nodeValue.split(/(\s+)/).forEach(function (part) {
-                    if (!part) return;
-                    if (/^\s+$/.test(part)) return f.appendChild(document.createTextNode(' '));
-                    var s = document.createElement('span'); s.className = 'hh-w'; s.style.opacity = 0; s.textContent = part; f.appendChild(s);
-                });
-                t.parentNode.replaceChild(f, t);
-            });
-            h2.dataset.rv = 'words'; io.observe(h2);
-        });
-        document.querySelectorAll('#stacks .glass-panel,#cases .project-card,#diferenciais .glass-panel,#contato .glass-panel').forEach(function (c) {
-            var sib = [].indexOf.call(c.parentNode.children, c);
-            c.dataset.rd = Math.min(sib, 5) * 90; c.style.opacity = 0; io.observe(c);
-        });
-
-        /* rolagem com inércia (só mouse, nunca dentro do modal/campos) */
-        if (matchMedia('(pointer:fine)').matches) {
-            var cur = scrollY, tgt = scrollY, raf = 0;
-            var max = function () { return document.documentElement.scrollHeight - innerHeight; };
-            var loop = function () {
-                cur += (tgt - cur) * .11;
-                if (Math.abs(tgt - cur) < .5) { cur = tgt; raf = 0; } else raf = requestAnimationFrame(loop);
-                scrollTo({ top: cur, behavior: 'instant' });
-            };
-            addEventListener('wheel', function (e) {
-                if (e.ctrlKey || (modal && !modal.classList.contains('hidden')) || e.target.closest('textarea,select')) return;
-                e.preventDefault();
-                if (!raf) cur = tgt = scrollY;
-                tgt = Math.max(0, Math.min(max(), tgt + e.deltaY * (e.deltaMode === 1 ? 32 : 1)));
-                if (!raf) raf = requestAnimationFrame(loop);
-            }, { passive: false });
-            addEventListener('scroll', function () {
-                if (!raf || Math.abs(scrollY - cur) > 3) { cancelAnimationFrame(raf); raf = 0; cur = tgt = scrollY; }
-            }, { passive: true });
-        }
-    })();
     </script>
 </body>
 </html>
