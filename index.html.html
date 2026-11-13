@@ -2,6 +2,8 @@
 <html lang="pt-BR" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/wg-agents-logo.png">
+    <link rel="apple-touch-icon" href="assets/wg-agents-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Wg Agents: software house de engenharia de software e ecossistemas digitais. Websites, PWAs, sistemas e automações B2B.">
     <meta name="theme-color" content="#0B1118">
@@ -506,6 +508,10 @@
         .sage input, .sage select, .sage textarea { color-scheme: dark; }
         html[data-skin="areia"] .sage input, html[data-skin="areia"] .sage select, html[data-skin="areia"] .sage textarea { color-scheme: light; }
     </style>
+    <style>
+        .wg-brand-logo { display: block; width: 52px; height: 60px; flex-shrink: 0; object-fit: contain; }
+        @media (max-width: 380px) { .wg-brand-logo { width: 44px; height: 52px; } }
+    </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
 
@@ -513,9 +519,7 @@
     <header class="fixed top-0 left-0 w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="hh-anim flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-accent to-brand-purple flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
-                    W
-                </div>
+                <img src="assets/wg-agents-logo.png" alt="" width="52" height="60" class="wg-brand-logo" decoding="async">
                 <div>
                     <span class="text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-brand-accent">WG AGENTS</span>
                     <span class="block text-[10px] text-brand-400 font-semibold tracking-widest uppercase">Software House</span>
@@ -1047,9 +1051,7 @@
                 <!-- Brand Info -->
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-purple flex items-center justify-center text-white font-bold text-lg">
-                            W
-                        </div>
+                        <img src="assets/wg-agents-logo.png" alt="" width="52" height="60" class="wg-brand-logo" decoding="async" loading="lazy">
                         <span class="text-xl font-extrabold text-white">WG AGENTS</span>
                     </div>
                     <p class="text-slate-400 text-sm max-w-sm mb-6 leading-relaxed">
