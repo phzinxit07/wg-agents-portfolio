@@ -407,6 +407,89 @@
             .wg-btn,.wg-fab,.filter-btn,.project-card,#stacks .glass-panel,#diferenciais .glass-panel,.wg-skin-list,header>div:first-child,nav a[data-hh="nav"]::after{transition:none !important}
         }
     </style>
+
+    <style id="responsive-plans">
+        /* A hero mantém vídeo, texto e indicadores no mesmo palco em qualquer tela. */
+        section[id] { scroll-margin-top: 96px; }
+        footer a { overflow-wrap: anywhere; }
+        .hh { height: auto; min-height: max(640px, 100svh); display: block; }
+        .hh-stage { position: relative; inset: auto; min-height: inherit; box-sizing: border-box;
+            grid-template-columns: minmax(0, 1fr) minmax(180px, 28vw) auto;
+            padding: 112px clamp(24px, 5vw, 96px) 48px; }
+        .hh-copy { min-width: 0; max-width: 620px; padding: 0; }
+        .hh-line > span { white-space: normal; }
+        .hh-h1 { font-size: clamp(32px, 2.8vw, 56px); }
+        .hh-p { font-size: clamp(16px, 1.3vw, 22px); max-width: 34em; }
+        .hh-eyebrow { font-size: clamp(12px, 1.1vw, 18px); }
+        .hh-btn { min-height: 46px; height: auto; padding: 13px 22px; font-size: clamp(14px, 1.15vw, 18px); white-space: normal; }
+        .hh-cards { padding: 0; }
+        .hh-hand { position: absolute; inset: 0; min-height: 0; }
+        .hh-card { width: clamp(130px, 11vw, 190px); height: auto; min-height: 112px; padding: 16px; gap: 8px; }
+        .hh-label { font-size: 10px; }
+        .hh-num { font-size: clamp(32px, 3vw, 52px); }
+        .hh-unit { font-size: 10px; }
+        .plans { padding: 88px 24px; color: var(--ink, #1E3227); background: var(--bg, #CBCFB8); }
+        .plans-inner { max-width: 960px; margin: 0 auto; }
+        .plans-heading { max-width: 620px; margin-bottom: 36px; }
+        .plans-kicker { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink2, #3F5447); }
+        .plans h2 { margin: 12px 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; letter-spacing: -.04em; font-weight: 600; }
+        .plans-intro { font-size: 16px; line-height: 1.7; color: var(--ink2, #3F5447); }
+        .plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+        .plan-card { display: flex; flex-direction: column; min-width: 0; padding: 32px; border-radius: 28px;
+            background: var(--panel, rgba(255,255,255,.55)); border: 1px solid var(--line, rgba(30,50,39,.2)); }
+        .plan-card.featured { border: 2px solid var(--ink, #1E3227); }
+        .plan-tag { min-height: 24px; margin-bottom: 20px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+        .plan-card h3 { font-size: 24px; font-weight: 500; letter-spacing: -.03em; margin: 0 0 10px; }
+        .plan-description { color: var(--ink2, #3F5447); font-size: 14px; line-height: 1.6; min-height: 46px; }
+        .plan-price { margin: 28px 0; }
+        .plan-price small { display: block; font-size: 12px; margin-bottom: 8px; color: var(--ink2, #3F5447); }
+        .plan-price strong { font-size: clamp(44px, 5vw, 60px); font-weight: 400; letter-spacing: -.05em; line-height: 1.1; }
+        .plan-price span { font-size: 14px; color: var(--ink2, #3F5447); }
+        .plan-features { list-style: none; padding: 24px 0 28px; margin: 0; border-top: 1px solid var(--line, rgba(30,50,39,.2)); }
+        .plan-features li { display: flex; gap: 10px; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+        .plan-features li::before { content: '✓'; flex: none; font-weight: 700; }
+        .plan-cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px;
+            margin-top: auto; border: 2px solid var(--ink, #1E3227); border-radius: 999px; background: var(--ink, #1E3227);
+            color: var(--on, #EEF0E2); text-decoration: none; text-align: center; font-size: 14px; font-weight: 600; transition: background .2s, color .2s; }
+        .plan-cta:hover { background: transparent; color: var(--ink, #1E3227); }
+        .plans-note { margin-top: 24px; font-size: 13px; line-height: 1.7; color: var(--ink2, #3F5447); }
+        @media (max-width: 1023px) {
+            .hh { --s: .7px; min-height: max(780px, 100svh); }
+            .hh-stage { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr auto; gap: 140px;
+                padding: 112px 24px 32px; transform: none; opacity: 1; }
+            .hh-copy { grid-column: 1; grid-row: 1; align-self: start; max-width: 560px; }
+            .hh-cards { grid-column: 1; grid-row: 2; flex-direction: row; justify-self: stretch; gap: 10px; position: relative; }
+            .hh-card { flex: 1; min-width: 0; width: auto; min-height: 108px; padding: 14px 10px; border-radius: 16px; }
+            .hh-hand { position: absolute; inset: 0; transform: none; }
+            .hh-media { width: 100%; height: 100%; aspect-ratio: auto; }
+            .hh-v { object-fit: cover; object-position: 55% 100%; }
+            .hh::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+                background: linear-gradient(180deg, var(--hh-bg) 0%, var(--hh-bg) 30%, transparent 78%); }
+            .hh-h1 { font-size: clamp(30px, 5vw, 46px); margin-top: 22px; }
+            .hh-p { font-size: 16px; margin-top: 20px; }
+            .hh-eyebrow { font-size: 12px; line-height: 1.6; }
+            .hh-cta { margin-top: 24px; gap: 10px; }
+            .hh-label { font-size: 9px; letter-spacing: .04em; }
+            .hh-label svg { width: 14px; height: 14px; }
+            .hh-num { font-size: 32px; }
+            .hh-unit { font-size: 10px; }
+            .wg-dock { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); gap: 8px; }
+            .wg-fab { width: 44px; height: 44px; }
+            .wg-skin-list { right: 52px; gap: 8px; }
+        }
+        @media (max-width: 600px) {
+            .hh-stage { padding: 104px 20px 28px; gap: 130px; }
+            .hh-cards { padding-right: 40px; }
+            .hh-label svg { display: none; }
+            .hh-cta { flex-direction: column; align-items: flex-start; }
+            .hh-btn { justify-content: center; max-width: 100%; }
+            .plans { padding: 64px 20px; }
+            .plans-grid { grid-template-columns: 1fr; gap: 20px; }
+            .plan-card { padding: 28px 24px; }
+            .plan-description { min-height: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) { .plan-cta { transition: none; } }
+    </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
 
@@ -424,33 +507,33 @@
             </a>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+            <nav class="hidden lg:flex items-center gap-5 text-sm font-medium text-slate-300">
                 <a data-hh="nav" href="#sobre" class="hh-anim hover:text-brand-400 transition-colors">Sobre</a>
                 <a data-hh="nav" href="#cases" class="hh-anim hover:text-brand-400 transition-colors">Cases & Projetos</a>
                 <a data-hh="nav" href="#stacks" class="hh-anim hover:text-brand-400 transition-colors">Stacks</a>
                 <a data-hh="nav" href="#diferenciais" class="hh-anim hover:text-brand-400 transition-colors">Diferenciais</a>
-                <a data-hh="nav" href="#contato" class="hh-anim hover:text-brand-400 transition-colors">Cotação</a>
+                <a data-hh="nav" href="#planos" class="hh-anim hover:text-brand-400 transition-colors">Planos</a>
             </nav>
 
-            <div class="hidden md:flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-4">
                 <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="hh-anim px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
                     <i class="fab me-1 fa-whatsapp text-lg"></i> Falar com Dev
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="hh-anim md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
+            <button id="mobileMenuBtn" type="button" aria-label="Abrir menu de navegação" aria-controls="mobileMenu" aria-expanded="false" class="hh-anim lg:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 pt-4 pb-6 space-y-3">
+        <div id="mobileMenu" class="hidden lg:hidden glass-panel border-t border-slate-800 px-4 pt-4 pb-6 space-y-3">
             <a href="#sobre" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Sobre</a>
             <a href="#cases" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Cases & Projetos</a>
             <a href="#stacks" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Stacks</a>
             <a href="#diferenciais" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Diferenciais</a>
-            <a href="#contato" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Cotação Rápida</a>
+            <a href="#planos" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Planos &amp; valores</a>
             <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="w-full mt-2 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-center block">
                 <i class="fab fa-whatsapp me-2"></i> WhatsApp Direct
             </a>
@@ -847,6 +930,43 @@
     </section>
 
     <!-- SIMULADOR / FORMULÁRIO DE COTAÇÃO -->
+    <!-- PLANOS MENSAIS -->
+    <section id="planos" class="plans" aria-labelledby="plans-title">
+        <div class="plans-inner">
+            <div class="plans-heading">
+                <span class="plans-kicker">Planos &amp; valores</span>
+                <h2 id="plans-title">Seu negócio online.<br>Com cuidado contínuo.</h2>
+                <p class="plans-intro">Contamos com planos completos a partir de R$ 95/mês, com manutenção inclusa. Escolha o acompanhamento ideal para o seu projeto.</p>
+            </div>
+            <div class="plans-grid">
+                <article class="plan-card" aria-labelledby="plan-essential">
+                    <p class="plan-tag">O cuidado essencial</p>
+                    <h3 id="plan-essential">Essencial</h3>
+                    <p class="plan-description">Para manter sua presença digital em dia, com manutenção inclusa.</p>
+                    <p class="plan-price"><small>A partir de</small><strong>R$ 95</strong><span> /mês</span></p>
+                    <ul class="plan-features">
+                        <li>Plano completo para sua presença digital</li>
+                        <li>Manutenção inclusa</li>
+                    </ul>
+                    <a class="plan-cta" href="https://wa.me/5585998216859?text=Ol%C3%A1%21%20Gostaria%20de%20conhecer%20o%20plano%20Essencial%20a%20partir%20de%20R%24%2095/m%C3%AAs%2C%20com%20manuten%C3%A7%C3%A3o%20inclusa." target="_blank" rel="noopener noreferrer" aria-label="Consultar o plano Essencial, a partir de 95 reais por mês">Quero o Essencial <span aria-hidden="true">&nbsp;↗</span></a>
+                </article>
+                <article class="plan-card featured" aria-labelledby="plan-monitor">
+                    <p class="plan-tag">Mais tranquilidade, 24 horas por dia</p>
+                    <h3 id="plan-monitor">Monitoramento inteligente</h3>
+                    <p class="plan-description">Para acompanhar seu site continuamente e identificar falhas.</p>
+                    <p class="plan-price"><small>A partir de</small><strong>R$ 130</strong><span> /mês</span></p>
+                    <ul class="plan-features">
+                        <li>Todos os benefícios do Essencial</li>
+                        <li>Manutenção inclusa</li>
+                        <li>Monitoramento inteligente 24h contra falhas</li>
+                    </ul>
+                    <a class="plan-cta" href="https://wa.me/5585998216859?text=Ol%C3%A1%21%20Gostaria%20de%20conhecer%20o%20plano%20a%20partir%20de%20R%24%20130/m%C3%AAs%2C%20com%20manuten%C3%A7%C3%A3o%20inclusa%20e%20monitoramento%20inteligente%2024h%20contra%20falhas." target="_blank" rel="noopener noreferrer" aria-label="Consultar o plano com monitoramento inteligente, a partir de 130 reais por mês">Quero mais tranquilidade <span aria-hidden="true">&nbsp;↗</span></a>
+                </article>
+            </div>
+            <p class="plans-note">Valores mensais a partir dos preços indicados. Converse com a gente para definir o escopo e confirmar as condições do seu projeto.</p>
+        </div>
+    </section>
+
     <section id="contato" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
@@ -907,7 +1027,7 @@
     <!-- FOOTER -->
     <footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <!-- Brand Info -->
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
@@ -964,8 +1084,8 @@
     <!-- CASE DETAILS MODAL -->
     <div id="caseModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
         <div class="glass-panel max-w-2xl w-full rounded-3xl border border-slate-700 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl focus:outline-none">
-                <i class="fas fa-times"></i>
+            <button type="button" aria-label="Fechar detalhes do projeto" onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl focus:outline-none">
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M6 18 18 6"/></svg>
             </button>
             <div id="modalContent">
                 <!-- Dynamic Content Injected Here -->
@@ -1111,6 +1231,7 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
         });
 
         document.querySelectorAll('.mobile-link').forEach(link => {
@@ -1418,7 +1539,7 @@
                 <button type="button" role="radio" aria-checked="false" data-skin="nevoa" aria-label="Skin Névoa" title="Névoa" style="--sw:#C4CED8;--sw2:#1E2C3A"></button>
                 <button type="button" role="radio" aria-checked="false" data-skin="grafite" aria-label="Skin Grafite" title="Grafite" style="--sw:#3D3E36;--sw2:#D8BC6A"></button>
             </div>
-            <button type="button" class="wg-fab" id="wgSkinBtn" aria-expanded="false" aria-controls="wgSkinList" aria-label="Escolher skin do site"><i class="fas fa-palette" aria-hidden="true"></i></button>
+            <button type="button" class="wg-fab" id="wgSkinBtn" aria-expanded="false" aria-controls="wgSkinList" aria-label="Escolher skin do site"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.4-3.4 1.5 1.5 0 0 1 1.1-2.6H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="10" r=".8"/><circle cx="10" cy="6.5" r=".8"/><circle cx="15" cy="7" r=".8"/></svg></button>
         </div>
         <a class="wg-fab wg-wa" href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
     </div>
@@ -1473,7 +1594,7 @@
                     links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
                 });
             }, { rootMargin: '-45% 0px -50% 0px' });
-            ['sobre', 'cases', 'stacks', 'diferenciais', 'contato'].forEach(function (id) { var el = d.getElementById(id); if (el) io.observe(el); });
+            ['sobre', 'cases', 'stacks', 'diferenciais', 'planos', 'contato'].forEach(function (id) { var el = d.getElementById(id); if (el) io.observe(el); });
         }
 
         /* números do hero contam até o valor quando a entrada termina */
