@@ -3,35 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wg Agents: software house de engenharia de software e ecossistemas digitais. Websites, PWAs, sistemas e automações B2B.">
+    <meta name="theme-color" content="#CBCFB8">
+    <script>try{var k=localStorage.getItem('wg-skin');if(k)document.documentElement.setAttribute('data-skin',k)}catch(e){}</script>
     <title>Wg Agents | Engenharia de Software & Ecossistemas Digitais</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        /* Paleta ligada a variáveis CSS (canais RGB): as skins trocam os valores, os utilitários seguem. */
+        var v = function (n) { return 'rgb(var(--' + n + ') / <alpha-value>)'; };
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0f5ff',
-                            100: '#e0ebff',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e1b4b',
-                            accent: '#818cf8',
-                            purple: '#a855f7'
-                        },
-                        brand: { 50:'#EEF0E2', 100:'#DDE1CB', 300:'#7A6C2C', 400:'#9B8A3E', 500:'#1E3227', 600:'#1E3227', 700:'#2A4435', 900:'#1E3227', accent:'#3F5447', purple:'#9B8A3E' },
-                        slate: { 200:'#1E3227', 300:'#3F5447', 400:'#3F5447', 500:'#5A6E60', 700:'#9AA48A', 800:'#AEB69A', 900:'#C0C5AB', 950:'#B8BEA3' },
-                        darkbg: '#CBCFB8',
-                        cardbg: '#111827',
-                        cardborder: '#1f2937'
+                        brand: { 50: v('brand-50'), 100: v('brand-100'), 300: v('brand-300'), 400: v('brand-400'), 500: v('brand-500'), 600: v('brand-600'), 700: v('brand-700'), 900: v('brand-900'), accent: v('brand-accent'), purple: v('brand-purple') },
+                        slate: { 200: v('slate-200'), 300: v('slate-300'), 400: v('slate-400'), 500: v('slate-500'), 700: v('slate-700'), 800: v('slate-800'), 900: v('slate-900'), 950: v('slate-950') },
+                        darkbg: '#CBCFB8', cardbg: '#111827', cardborder: '#1f2937'
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
@@ -319,6 +309,104 @@
         .hh-hand { transform:translate3d(0,calc(var(--hp,0) * 36px),0) scale(calc(1 + var(--hp,0) * .05)); }
         .hh-w { display:inline-block; }
     </style>
+    <style id="wg-pro">
+        /* ===== Wg Pro: skins, botões, movimento e refinamentos (identidade Sage preservada) ===== */
+        :root{
+            --brand-50:238 240 226;--brand-100:221 225 203;--brand-300:122 108 44;--brand-400:155 138 62;--brand-500:30 50 39;--brand-600:30 50 39;--brand-700:42 68 53;--brand-900:30 50 39;--brand-accent:63 84 71;--brand-purple:155 138 62;
+            --slate-200:30 50 39;--slate-300:63 84 71;--slate-400:63 84 71;--slate-500:90 110 96;--slate-700:154 164 138;--slate-800:174 182 154;--slate-900:192 197 171;--slate-950:184 190 163;
+            --bg:#CBCFB8;--ink:#1E3227;--ink2:#3F5447;--gold:#9B8A3E;--on:#EEF0E2;--panel:rgba(222,226,206,.5);--line:rgba(30,50,39,.18);--nav:rgba(203,207,184,.72);--spot:rgba(255,255,255,.4);
+            --hero-filter:none;--hh-card:rgba(222,226,206,.42);--hh-ghost:rgba(30,50,39,.4);--hh-hover:#2A4435;
+        }
+        html[data-skin="areia"]{
+            --brand-50:244 236 223;--brand-100:232 222 204;--brand-300:122 82 32;--brand-400:154 106 44;--brand-500:58 42 32;--brand-600:58 42 32;--brand-700:86 62 46;--brand-900:58 42 32;--brand-accent:106 84 68;--brand-purple:154 106 44;
+            --slate-200:58 42 32;--slate-300:106 84 68;--slate-400:106 84 68;--slate-500:133 111 94;--slate-700:185 169 142;--slate-800:199 185 160;--slate-900:208 195 172;--slate-950:205 191 170;
+            --bg:#D7CBBB;--ink:#3A2A20;--ink2:#6A5444;--gold:#9A6A2C;--on:#F4ECDF;--panel:rgba(238,228,212,.55);--line:rgba(58,42,32,.18);--nav:rgba(215,203,187,.74);
+            --hero-filter:hue-rotate(-34deg);--hh-card:rgba(238,228,212,.45);--hh-ghost:rgba(58,42,32,.4);--hh-hover:#563E2E;
+        }
+        html[data-skin="nevoa"]{
+            --brand-50:234 240 245;--brand-100:214 224 233;--brand-300:52 90 128;--brand-400:62 106 148;--brand-500:30 44 58;--brand-600:30 44 58;--brand-700:44 66 86;--brand-900:30 44 58;--brand-accent:74 96 116;--brand-purple:62 106 148;
+            --slate-200:30 44 58;--slate-300:74 96 116;--slate-400:74 96 116;--slate-500:102 121 138;--slate-700:154 171 184;--slate-800:174 189 200;--slate-900:188 201 211;--slate-950:180 194 205;
+            --bg:#C4CED8;--ink:#1E2C3A;--ink2:#4A6074;--gold:#3E6A94;--on:#EAF0F5;--panel:rgba(226,233,240,.55);--line:rgba(30,44,58,.18);--nav:rgba(196,206,216,.74);
+            --hero-filter:hue-rotate(140deg) saturate(.7);--hh-card:rgba(226,233,240,.45);--hh-ghost:rgba(30,44,58,.4);--hh-hover:#2C4256;
+        }
+        html[data-skin="grafite"]{
+            --brand-50:52 53 45;--brand-100:66 67 57;--brand-300:232 208 128;--brand-400:216 188 106;--brand-500:216 188 106;--brand-600:216 188 106;--brand-700:232 208 128;--brand-900:74 75 63;--brand-accent:200 176 98;--brand-purple:216 188 106;
+            --slate-200:236 235 227;--slate-300:200 199 187;--slate-400:180 179 166;--slate-500:142 141 128;--slate-700:98 99 86;--slate-800:80 81 70;--slate-900:66 67 57;--slate-950:52 53 45;
+            --bg:#3D3E36;--ink:#ECEBE3;--ink2:#B4B3A6;--gold:#D8BC6A;--on:#1E1F1A;--panel:rgba(86,87,74,.5);--line:rgba(236,235,227,.14);--nav:rgba(61,62,54,.8);--spot:rgba(255,255,255,.09);
+            --hero-filter:brightness(.3) saturate(1.15);--hh-card:rgba(86,87,74,.5);--hh-ghost:rgba(236,235,227,.4);--hh-hover:#E8D080;
+        }
+        /* regras do tema Sage lidas das variáveis (no padrão ficam idênticas às originais) */
+        body.sage{background:var(--bg);color:var(--ink)}
+        .sage .glass-panel{background-color:var(--panel);border-color:var(--line);background-image:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px),var(--spot),transparent 70%)}
+        .sage .glass-nav{background:var(--nav);border-bottom-color:var(--line)}
+        .sage .text-white{color:var(--ink)}
+        .sage .text-white.bg-brand-600,.sage .text-white.bg-gradient-to-r,.sage .text-white.bg-gradient-to-tr,.sage .text-white.bg-emerald-500,.sage .bg-brand-600 .text-white{color:var(--on)}
+        .sage header .bg-clip-text{-webkit-text-fill-color:var(--ink);color:var(--ink)}
+        .sage header a.bg-gradient-to-r{background-color:rgb(var(--brand-600))}
+        .sage ::-webkit-scrollbar-track{background:var(--bg)}
+        .sage ::-webkit-scrollbar-thumb{background:rgb(var(--slate-700))}
+        .sage footer,.sage #caseModal .glass-panel{color:var(--ink)}
+        .glow-effect::before{background-image:linear-gradient(45deg,rgb(var(--brand-400)),rgb(var(--brand-accent)),rgb(var(--brand-300)),rgb(var(--brand-400)))}
+        .hh{--hh-bg:var(--bg);--hh-ink:var(--ink);--hh-ink2:var(--ink2);--hh-gold:var(--gold)}
+        .hh-hand{filter:var(--hero-filter);transition:filter .6s ease}
+        .hh-btn{color:var(--on)}
+        .hh-btn:hover{background:var(--hh-hover)}
+        .hh-btn.is-ghost{color:var(--hh-ink);border-color:var(--hh-ghost)}
+        .hh-btn.is-ghost:hover{background:color-mix(in srgb,var(--hh-ink) 9%,transparent)}
+        .hh-card{background:var(--hh-card);border-color:var(--line)}
+        html.wg-fade,html.wg-fade *{transition:background-color .55s ease,color .55s ease,border-color .55s ease,fill .55s ease,stroke .55s ease !important}
+        /* foco visível e campos de formulário */
+        :focus-visible{outline:2px solid rgb(var(--brand-400));outline-offset:3px}
+        .sage input:focus,.sage select:focus,.sage textarea:focus{outline:none;border-color:rgb(var(--brand-400));box-shadow:0 0 0 4px color-mix(in srgb,rgb(var(--brand-400)) 24%,transparent)}
+        /* barra de progresso de leitura */
+        .wg-progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:51;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,rgb(var(--brand-400)),var(--gold));pointer-events:none}
+        /* cabeçalho que encolhe e menu que acompanha a seção */
+        header>div:first-child{transition:height .35s cubic-bezier(.16,1,.3,1)}
+        header.wg-scrolled>div:first-child{height:4rem}
+        header.glass-nav{transition:box-shadow .35s ease}
+        header.wg-scrolled{box-shadow:0 14px 34px -22px rgba(0,0,0,.5)}
+        nav a[data-hh="nav"]{position:relative}
+        nav a[data-hh="nav"]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+        nav a[data-hh="nav"]:hover::after,nav a[data-hh="nav"].is-active::after{transform:scaleX(1)}
+        nav a[data-hh="nav"].is-active{color:rgb(var(--brand-400))}
+        /* ornamento nos títulos de seção e fio de luz entre seções */
+        section span.text-xs.font-bold.uppercase.tracking-widest::before,.text-center>span.text-xs.font-bold.uppercase.tracking-widest::after{content:"";display:inline-block;width:26px;height:1px;background:currentColor;opacity:.6;vertical-align:middle}
+        section span.text-xs.font-bold.uppercase.tracking-widest::before{margin-right:.75rem}
+        .text-center>span.text-xs.font-bold.uppercase.tracking-widest::after{margin-left:.75rem}
+        #stacks::before,#cases::before,#diferenciais::before,#contato::before{content:"";position:absolute;top:0;left:50%;width:min(640px,80%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55;pointer-events:none}
+        /* botões: brilho que varre, elevação e clique com mola */
+        .wg-btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.16,1,.3,1),translate .3s cubic-bezier(.16,1,.3,1),scale .2s ease,box-shadow .3s ease,opacity .2s ease,background-color .25s ease}
+        .wg-btn::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.38) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+        .wg-btn:hover::after{transform:translateX(120%)}
+        .wg-btn:hover{translate:0 -2px;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+        .hh-btn.wg-btn:hover{translate:0 0}
+        .wg-btn:active{scale:.97;translate:0 0}
+        .filter-btn{transition:translate .25s ease,scale .2s ease,background-color .25s ease,color .25s ease}
+        .filter-btn:hover{translate:0 -2px}.filter-btn:active{scale:.96}
+        /* cards que levantam (propriedade translate não briga com o FLIP do filtro) */
+        .project-card,#stacks .glass-panel,#diferenciais .glass-panel{transition:translate .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease,border-color .3s ease,opacity .3s ease}
+        .project-card:hover,#stacks .glass-panel:hover,#diferenciais .glass-panel:hover{translate:0 -6px;box-shadow:0 28px 50px -30px rgba(0,0,0,.5)}
+        /* dock: skins, voltar ao topo e WhatsApp */
+        .wg-dock{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:45;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+        .wg-fab{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:rgb(var(--brand-600));color:var(--on);box-shadow:0 12px 28px -12px rgba(0,0,0,.55);transition:translate .3s cubic-bezier(.16,1,.3,1),scale .2s ease,opacity .3s ease,box-shadow .3s ease}
+        .wg-fab:hover{translate:0 -3px;box-shadow:0 18px 34px -14px rgba(0,0,0,.6)}.wg-fab:active{scale:.94}
+        .wg-wa{background:linear-gradient(135deg,#10b981,#0d9488);color:#fff;font-size:22px}
+        .wg-top{opacity:0;translate:0 12px;pointer-events:none}
+        .wg-top.show{opacity:1;translate:0 0;pointer-events:auto}
+        .wg-top svg{position:absolute;inset:0;width:100%;height:100%;rotate:-90deg}
+        .wg-top .wg-ring{transition:stroke-dashoffset .2s linear}
+        .wg-top i{font-size:15px}
+        .wg-skin{position:relative}
+        .wg-skin-list{position:absolute;right:58px;bottom:4px;display:flex;gap:10px;padding:8px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform-origin:100% 50%;scale:.85;opacity:0;pointer-events:none;transition:scale .35s cubic-bezier(.16,1,.3,1),opacity .25s ease}
+        .wg-skin.open .wg-skin-list{scale:1;opacity:1;pointer-events:auto}
+        .wg-skin-list button{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--sw) 50%,var(--sw2) 50%);border:1px solid var(--line);transition:scale .2s ease,box-shadow .2s ease}
+        .wg-skin-list button:hover{scale:1.12}
+        .wg-skin-list button[aria-checked="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}
+        @media (prefers-reduced-motion:reduce){
+            .wg-btn::after{display:none}
+            .wg-btn,.wg-fab,.filter-btn,.project-card,#stacks .glass-panel,#diferenciais .glass-panel,.wg-skin-list,header>div:first-child,nav a[data-hh="nav"]::after{transition:none !important}
+        }
+    </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
 
@@ -363,7 +451,7 @@
             <a href="#stacks" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Stacks</a>
             <a href="#diferenciais" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Diferenciais</a>
             <a href="#contato" class="mobile-link block py-2 text-slate-300 hover:text-brand-400">Cotação Rápida</a>
-            <a href="https://wa.me/5585999999999?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="w-full mt-2 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-center block">
+            <a href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="w-full mt-2 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-center block">
                 <i class="fab fa-whatsapp me-2"></i> WhatsApp Direct
             </a>
         </div>
@@ -835,7 +923,7 @@
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-white hover:border-brand-500 flex items-center justify-center transition-all">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="https://wa.me/5585999999999" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500 flex items-center justify-center transition-all">
+                        <a href="https://wa.me/5585998216859" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500 flex items-center justify-center transition-all">
                             <i class="fab fa-whatsapp text-lg"></i>
                         </a>
                         <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel border border-slate-800 text-slate-300 hover:text-white hover:border-brand-purple flex items-center justify-center transition-all">
@@ -1045,7 +1133,7 @@
                          `*Prazo Estimado:* ${deadline}\n` +
                          `*Detalhes:* ${details || 'Nenhum detalhe extra informado.'}`;
 
-            const phone = "5585999999999";
+            const phone = "5585998216859";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         });
@@ -1312,6 +1400,99 @@
             addEventListener('scroll', function () {
                 if (!raf || Math.abs(scrollY - cur) > 3) { cancelAnimationFrame(raf); raf = 0; cur = tgt = scrollY; }
             }, { passive: true });
+        }
+    })();
+    </script>
+
+    <!-- Wg Pro: progresso de leitura + dock (skins, topo, WhatsApp) -->
+    <div class="wg-progress" aria-hidden="true"></div>
+    <div class="wg-dock" id="wgDock">
+        <button type="button" class="wg-fab wg-top" id="wgTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="2"/><circle class="wg-ring" cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/></svg>
+            <i class="fas fa-arrow-up" aria-hidden="true"></i>
+        </button>
+        <div class="wg-skin" id="wgSkin">
+            <div class="wg-skin-list" id="wgSkinList" role="radiogroup" aria-label="Skin do site">
+                <button type="button" role="radio" aria-checked="true" data-skin="sage" aria-label="Skin Sage" title="Sage" style="--sw:#CBCFB8;--sw2:#1E3227"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="areia" aria-label="Skin Areia" title="Areia" style="--sw:#D7CBBB;--sw2:#3A2A20"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="nevoa" aria-label="Skin Névoa" title="Névoa" style="--sw:#C4CED8;--sw2:#1E2C3A"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="grafite" aria-label="Skin Grafite" title="Grafite" style="--sw:#3D3E36;--sw2:#D8BC6A"></button>
+            </div>
+            <button type="button" class="wg-fab" id="wgSkinBtn" aria-expanded="false" aria-controls="wgSkinList" aria-label="Escolher skin do site"><i class="fas fa-palette" aria-hidden="true"></i></button>
+        </div>
+        <a class="wg-fab wg-wa" href="https://wa.me/5585998216859?text=Ol%C3%A1%21+Vim+pelo+portf%C3%B3lio+da+Wg+Agents+e+gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+    </div>
+
+    <script>
+    /* Wg Pro: skins, progresso, cabeçalho vivo, menu por seção, contagem e botões */
+    (function () {
+        var d = document, root = d.documentElement, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var $ = function (s) { return d.querySelector(s); }, $$ = function (s) { return [].slice.call(d.querySelectorAll(s)); };
+        var BG = { sage: '#CBCFB8', areia: '#D7CBBB', nevoa: '#C4CED8', grafite: '#3D3E36' };
+        var meta = $('meta[name="theme-color"]'), box = $('#wgSkin'), btn = $('#wgSkinBtn'), sw = $$('#wgSkinList [data-skin]'), fadeT = 0;
+
+        function setSkin(n, animate) {
+            if (!BG[n]) n = 'sage';
+            if (animate && !reduce) { root.classList.add('wg-fade'); clearTimeout(fadeT); fadeT = setTimeout(function () { root.classList.remove('wg-fade'); }, 700); }
+            root.setAttribute('data-skin', n);
+            sw.forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-skin') === n)); });
+            if (meta) meta.setAttribute('content', BG[n]);
+            try { localStorage.setItem('wg-skin', n); } catch (e) {}
+        }
+        var saved = 'sage'; try { saved = localStorage.getItem('wg-skin') || 'sage'; } catch (e) {}
+        setSkin(saved, false);
+        function toggle(o) { box.classList.toggle('open', o); btn.setAttribute('aria-expanded', String(o)); }
+        btn.addEventListener('click', function () { toggle(!box.classList.contains('open')); });
+        sw.forEach(function (b) { b.addEventListener('click', function () { setSkin(b.getAttribute('data-skin'), true); }); });
+        d.addEventListener('click', function (e) { if (!box.contains(e.target)) toggle(false); });
+        d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('open')) { toggle(false); btn.focus(); } });
+
+        /* botões principais ganham brilho, elevação e mola */
+        $$('.hh-btn,header a[href^="https://wa.me"],#mobileMenu a[href^="https://wa.me"],.project-card button,#quoteForm button[type="submit"]').forEach(function (b) { b.classList.add('wg-btn'); });
+
+        /* rolagem: progresso, cabeçalho, botão de topo */
+        var bar = $('.wg-progress'), top = $('#wgTop'), ring = $('#wgTop .wg-ring'), hdr = $('header'), tick = false;
+        function onScroll() {
+            tick = false;
+            var max = Math.max(1, d.documentElement.scrollHeight - innerHeight), p = Math.min(1, scrollY / max);
+            bar.style.setProperty('--p', p.toFixed(4));
+            ring.style.strokeDashoffset = (100 - p * 100).toFixed(1);
+            hdr.classList.toggle('wg-scrolled', scrollY > 24);
+            top.classList.toggle('show', scrollY > innerHeight * 0.8);
+        }
+        addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        onScroll();
+        top.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
+        /* menu acompanha a seção visível */
+        var links = $$('nav a[data-hh="nav"]');
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (es) {
+                es.forEach(function (en) {
+                    if (!en.isIntersecting) return;
+                    links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            ['sobre', 'cases', 'stacks', 'diferenciais', 'contato'].forEach(function (id) { var el = d.getElementById(id); if (el) io.observe(el); });
+        }
+
+        /* números do hero contam até o valor quando a entrada termina */
+        var nums = $$('.hh-num').map(function (el) { var m = /^(\d+)(\+?)$/.exec(el.textContent.trim()); return m ? { el: el, n: +m[1], s: m[2] } : null; }).filter(Boolean);
+        if (nums.length && !reduce) {
+            nums.forEach(function (o) { o.el.textContent = '0' + o.s; });
+            var started = false;
+            var run = function () {
+                if (started) return; started = true;
+                var t0 = performance.now();
+                (function step(t) {
+                    var k = Math.min(1, (t - t0) / 1300), e = 1 - Math.pow(1 - k, 3);
+                    nums.forEach(function (o) { o.el.textContent = Math.round(o.n * e) + o.s; });
+                    if (k < 1) requestAnimationFrame(step);
+                })(t0);
+            };
+            if (!root.classList.contains('hh-pre')) setTimeout(run, 300);
+            else new MutationObserver(function () { if (!root.classList.contains('hh-pre')) setTimeout(run, 300); }).observe(root, { attributes: true, attributeFilter: ['class'] });
+            setTimeout(run, 5200);
         }
     })();
     </script>
