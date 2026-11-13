@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Wg Agents: software house de engenharia de software e ecossistemas digitais. Websites, PWAs, sistemas e automações B2B.">
-    <meta name="theme-color" content="#CBCFB8">
-    <script>try{var k=localStorage.getItem('wg-skin');if(k)document.documentElement.setAttribute('data-skin',k)}catch(e){}</script>
+    <meta name="theme-color" content="#0B1118">
+    <script>try{var k=localStorage.getItem('wg-theme-v2');if(k)document.documentElement.setAttribute('data-skin',k)}catch(e){}</script>
     <title>Wg Agents | Engenharia de Software & Ecossistemas Digitais</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -312,28 +312,24 @@
     <style id="wg-pro">
         /* ===== Wg Pro: skins, botões, movimento e refinamentos (identidade Sage preservada) ===== */
         :root{
-            --brand-50:238 240 226;--brand-100:221 225 203;--brand-300:122 108 44;--brand-400:155 138 62;--brand-500:30 50 39;--brand-600:30 50 39;--brand-700:42 68 53;--brand-900:30 50 39;--brand-accent:63 84 71;--brand-purple:155 138 62;
-            --slate-200:30 50 39;--slate-300:63 84 71;--slate-400:63 84 71;--slate-500:90 110 96;--slate-700:154 164 138;--slate-800:174 182 154;--slate-900:192 197 171;--slate-950:184 190 163;
-            --bg:#CBCFB8;--ink:#1E3227;--ink2:#3F5447;--gold:#9B8A3E;--on:#EEF0E2;--panel:rgba(222,226,206,.5);--line:rgba(30,50,39,.18);--nav:rgba(203,207,184,.72);--spot:rgba(255,255,255,.4);
-            --hero-filter:none;--hh-card:rgba(222,226,206,.42);--hh-ghost:rgba(30,50,39,.4);--hh-hover:#2A4435;
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:52 211 153;--brand-500:52 211 153;--brand-600:52 211 153;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:52 211 153;
+            --slate-200:229 231 235;--slate-300:203 213 225;--slate-400:167 176 189;--slate-500:135 147 163;--slate-700:51 65 85;--slate-800:38 49 62;--slate-900:21 30 41;--slate-950:13 20 29;
+            --bg:#0B1118;--ink:#F1F5F9;--ink2:#A7B0BD;--gold:#34D399;--on:#06251B;--panel:#141E29;--line:rgba(148,163,184,.2);--nav:rgba(11,17,24,.92);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.23);--hh-card:#141E29;--hh-ghost:rgba(148,163,184,.2);--hh-hover:#6EE7B7;
         }
         html[data-skin="areia"]{
-            --brand-50:244 236 223;--brand-100:232 222 204;--brand-300:122 82 32;--brand-400:154 106 44;--brand-500:58 42 32;--brand-600:58 42 32;--brand-700:86 62 46;--brand-900:58 42 32;--brand-accent:106 84 68;--brand-purple:154 106 44;
-            --slate-200:58 42 32;--slate-300:106 84 68;--slate-400:106 84 68;--slate-500:133 111 94;--slate-700:185 169 142;--slate-800:199 185 160;--slate-900:208 195 172;--slate-950:205 191 170;
-            --bg:#D7CBBB;--ink:#3A2A20;--ink2:#6A5444;--gold:#9A6A2C;--on:#F4ECDF;--panel:rgba(238,228,212,.55);--line:rgba(58,42,32,.18);--nav:rgba(215,203,187,.74);
-            --hero-filter:hue-rotate(-34deg);--hh-card:rgba(238,228,212,.45);--hh-ghost:rgba(58,42,32,.4);--hh-hover:#563E2E;
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:4 120 87;--brand-500:4 120 87;--brand-600:4 120 87;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:4 120 87;
+            --slate-200:21 32 43;--slate-300:51 65 85;--slate-400:82 97 112;--slate-500:100 116 139;--slate-700:203 213 225;--slate-800:226 232 240;--slate-900:237 242 247;--slate-950:241 245 249;
+            --bg:#F8FAFC;--ink:#15202B;--ink2:#526170;--gold:#047857;--on:#FFFFFF;--panel:#FFFFFF;--line:rgba(15,23,42,.14);--nav:rgba(248,250,252,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(1.1);--hh-card:#FFFFFF;--hh-ghost:rgba(15,23,42,.14);--hh-hover:#6EE7B7;
         }
         html[data-skin="nevoa"]{
-            --brand-50:234 240 245;--brand-100:214 224 233;--brand-300:52 90 128;--brand-400:62 106 148;--brand-500:30 44 58;--brand-600:30 44 58;--brand-700:44 66 86;--brand-900:30 44 58;--brand-accent:74 96 116;--brand-purple:62 106 148;
-            --slate-200:30 44 58;--slate-300:74 96 116;--slate-400:74 96 116;--slate-500:102 121 138;--slate-700:154 171 184;--slate-800:174 189 200;--slate-900:188 201 211;--slate-950:180 194 205;
-            --bg:#C4CED8;--ink:#1E2C3A;--ink2:#4A6074;--gold:#3E6A94;--on:#EAF0F5;--panel:rgba(226,233,240,.55);--line:rgba(30,44,58,.18);--nav:rgba(196,206,216,.74);
-            --hero-filter:hue-rotate(140deg) saturate(.7);--hh-card:rgba(226,233,240,.45);--hh-ghost:rgba(30,44,58,.4);--hh-hover:#2C4256;
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:56 189 248;--brand-500:56 189 248;--brand-600:56 189 248;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:56 189 248;
+            --slate-200:226 232 240;--slate-300:203 213 225;--slate-400:166 182 204;--slate-500:138 157 182;--slate-700:52 72 99;--slate-800:35 53 78;--slate-900:20 34 56;--slate-950:14 27 46;
+            --bg:#0B1423;--ink:#F1F5F9;--ink2:#A6B6CC;--gold:#38BDF8;--on:#082032;--panel:#142238;--line:rgba(148,163,184,.22);--nav:rgba(11,20,35,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.22);--hh-card:#142238;--hh-ghost:rgba(148,163,184,.22);--hh-hover:#6EE7B7;
         }
         html[data-skin="grafite"]{
-            --brand-50:52 53 45;--brand-100:66 67 57;--brand-300:232 208 128;--brand-400:216 188 106;--brand-500:216 188 106;--brand-600:216 188 106;--brand-700:232 208 128;--brand-900:74 75 63;--brand-accent:200 176 98;--brand-purple:216 188 106;
-            --slate-200:236 235 227;--slate-300:200 199 187;--slate-400:180 179 166;--slate-500:142 141 128;--slate-700:98 99 86;--slate-800:80 81 70;--slate-900:66 67 57;--slate-950:52 53 45;
-            --bg:#3D3E36;--ink:#ECEBE3;--ink2:#B4B3A6;--gold:#D8BC6A;--on:#1E1F1A;--panel:rgba(86,87,74,.5);--line:rgba(236,235,227,.14);--nav:rgba(61,62,54,.8);--spot:rgba(255,255,255,.09);
-            --hero-filter:brightness(.3) saturate(1.15);--hh-card:rgba(86,87,74,.5);--hh-ghost:rgba(236,235,227,.4);--hh-hover:#E8D080;
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:163 230 53;--brand-500:163 230 53;--brand-600:163 230 53;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:163 230 53;
+            --slate-200:229 229 229;--slate-300:212 212 212;--slate-400:179 179 179;--slate-500:163 163 163;--slate-700:64 64 64;--slate-800:48 48 48;--slate-900:32 32 32;--slate-950:25 25 25;
+            --bg:#151515;--ink:#F5F5F5;--ink2:#B3B3B3;--gold:#A3E635;--on:#1A2606;--panel:#202020;--line:rgba(255,255,255,.15);--nav:rgba(21,21,21,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.25);--hh-card:#202020;--hh-ghost:rgba(255,255,255,.15);--hh-hover:#6EE7B7;
         }
         /* regras do tema Sage lidas das variáveis (no padrão ficam idênticas às originais) */
         body.sage{background:var(--bg);color:var(--ink)}
@@ -489,6 +485,26 @@
             .plan-description { min-height: 0; }
         }
         @media (prefers-reduced-motion: reduce) { .plan-cta { transition: none; } }
+    </style>
+
+    <style id="color-refinements">
+        body { background: var(--bg); color: var(--ink); }
+        .hh-btn { background: rgb(var(--brand-600)); color: var(--on); }
+        .hh-btn.is-ghost { background: transparent; color: var(--ink); }
+        .hh-dot { background: rgb(var(--brand-400)); }
+        .hh-hand { background: radial-gradient(ellipse at 64% 66%, rgba(52,211,153,.1), transparent 58%); }
+        .hh-v { mix-blend-mode: luminosity; }
+        .plan-card.featured { border-color: rgb(var(--brand-400)); }
+        .plan-tag { color: rgb(var(--brand-400)); }
+        .plan-cta { background: rgb(var(--brand-600)); border-color: rgb(var(--brand-600)); color: var(--on); }
+        .plan-cta:hover { background: transparent; color: var(--ink); }
+        .plan-features li::before { color: rgb(var(--brand-400)); }
+        .sage #stacks .glass-panel > i { color: rgb(var(--brand-400)); }
+        .sage header a.bg-gradient-to-r { color: var(--on); }
+        .wg-wa { background: rgb(var(--brand-600)); color: var(--on); }
+        .sage .glow-effect::before { background-image: linear-gradient(45deg, #34D399, #059669, #6EE7B7); }
+        .sage input, .sage select, .sage textarea { color-scheme: dark; }
+        html[data-skin="areia"] .sage input, html[data-skin="areia"] .sage select, html[data-skin="areia"] .sage textarea { color-scheme: light; }
     </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
@@ -1534,10 +1550,10 @@
         </button>
         <div class="wg-skin" id="wgSkin">
             <div class="wg-skin-list" id="wgSkinList" role="radiogroup" aria-label="Skin do site">
-                <button type="button" role="radio" aria-checked="true" data-skin="sage" aria-label="Skin Sage" title="Sage" style="--sw:#CBCFB8;--sw2:#1E3227"></button>
-                <button type="button" role="radio" aria-checked="false" data-skin="areia" aria-label="Skin Areia" title="Areia" style="--sw:#D7CBBB;--sw2:#3A2A20"></button>
-                <button type="button" role="radio" aria-checked="false" data-skin="nevoa" aria-label="Skin Névoa" title="Névoa" style="--sw:#C4CED8;--sw2:#1E2C3A"></button>
-                <button type="button" role="radio" aria-checked="false" data-skin="grafite" aria-label="Skin Grafite" title="Grafite" style="--sw:#3D3E36;--sw2:#D8BC6A"></button>
+                <button type="button" role="radio" aria-checked="true" data-skin="sage" aria-label="Tema Carbono" title="Carbono" style="--sw:#0B1118;--sw2:#34D399"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="areia" aria-label="Tema Claro" title="Claro" style="--sw:#F8FAFC;--sw2:#047857"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="nevoa" aria-label="Tema Azul-noite" title="Azul-noite" style="--sw:#0B1423;--sw2:#38BDF8"></button>
+                <button type="button" role="radio" aria-checked="false" data-skin="grafite" aria-label="Tema Grafite" title="Grafite" style="--sw:#151515;--sw2:#A3E635"></button>
             </div>
             <button type="button" class="wg-fab" id="wgSkinBtn" aria-expanded="false" aria-controls="wgSkinList" aria-label="Escolher skin do site"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.4-3.4 1.5 1.5 0 0 1 1.1-2.6H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="10" r=".8"/><circle cx="10" cy="6.5" r=".8"/><circle cx="15" cy="7" r=".8"/></svg></button>
         </div>
@@ -1549,7 +1565,7 @@
     (function () {
         var d = document, root = d.documentElement, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
         var $ = function (s) { return d.querySelector(s); }, $$ = function (s) { return [].slice.call(d.querySelectorAll(s)); };
-        var BG = { sage: '#CBCFB8', areia: '#D7CBBB', nevoa: '#C4CED8', grafite: '#3D3E36' };
+        var BG = { sage: '#0B1118', areia: '#F8FAFC', nevoa: '#0B1423', grafite: '#151515' };
         var meta = $('meta[name="theme-color"]'), box = $('#wgSkin'), btn = $('#wgSkinBtn'), sw = $$('#wgSkinList [data-skin]'), fadeT = 0;
 
         function setSkin(n, animate) {
@@ -1558,9 +1574,9 @@
             root.setAttribute('data-skin', n);
             sw.forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-skin') === n)); });
             if (meta) meta.setAttribute('content', BG[n]);
-            try { localStorage.setItem('wg-skin', n); } catch (e) {}
+            try { localStorage.setItem('wg-theme-v2', n); } catch (e) {}
         }
-        var saved = 'sage'; try { saved = localStorage.getItem('wg-skin') || 'sage'; } catch (e) {}
+        var saved = 'sage'; try { saved = localStorage.getItem('wg-theme-v2') || 'sage'; } catch (e) {}
         setSkin(saved, false);
         function toggle(o) { box.classList.toggle('open', o); btn.setAttribute('aria-expanded', String(o)); }
         btn.addEventListener('click', function () { toggle(!box.classList.contains('open')); });

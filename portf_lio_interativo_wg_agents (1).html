@@ -7,31 +7,18 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        /* Paleta ligada a variáveis CSS (canais RGB): as skins trocam os valores, os utilitários seguem. */
+        var v = function (n) { return 'rgb(var(--' + n + ') / <alpha-value>)'; };
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0f5ff',
-                            100: '#e0ebff',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e1b4b',
-                            accent: '#818cf8',
-                            purple: '#a855f7'
-                        },
-                        brand: { 50:'#EEF0E2', 100:'#DDE1CB', 300:'#7A6C2C', 400:'#9B8A3E', 500:'#1E3227', 600:'#1E3227', 700:'#2A4435', 900:'#1E3227', accent:'#3F5447', purple:'#9B8A3E' },
-                        slate: { 200:'#1E3227', 300:'#3F5447', 400:'#3F5447', 500:'#5A6E60', 700:'#9AA48A', 800:'#AEB69A', 900:'#C0C5AB', 950:'#B8BEA3' },
-                        darkbg: '#CBCFB8',
-                        cardbg: '#111827',
-                        cardborder: '#1f2937'
+                        brand: { 50: v('brand-50'), 100: v('brand-100'), 300: v('brand-300'), 400: v('brand-400'), 500: v('brand-500'), 600: v('brand-600'), 700: v('brand-700'), 900: v('brand-900'), accent: v('brand-accent'), purple: v('brand-purple') },
+                        slate: { 200: v('slate-200'), 300: v('slate-300'), 400: v('slate-400'), 500: v('slate-500'), 700: v('slate-700'), 800: v('slate-800'), 900: v('slate-900'), 950: v('slate-950') },
+                        darkbg: '#CBCFB8', cardbg: '#111827', cardborder: '#1f2937'
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
@@ -320,6 +307,100 @@
         .hh-w { display:inline-block; }
     </style>
 
+    <style id="wg-pro">
+        /* ===== Wg Pro: skins, botões, movimento e refinamentos (identidade Sage preservada) ===== */
+        :root{
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:52 211 153;--brand-500:52 211 153;--brand-600:52 211 153;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:52 211 153;
+            --slate-200:229 231 235;--slate-300:203 213 225;--slate-400:167 176 189;--slate-500:135 147 163;--slate-700:51 65 85;--slate-800:38 49 62;--slate-900:21 30 41;--slate-950:13 20 29;
+            --bg:#0B1118;--ink:#F1F5F9;--ink2:#A7B0BD;--gold:#34D399;--on:#06251B;--panel:#141E29;--line:rgba(148,163,184,.2);--nav:rgba(11,17,24,.92);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.23);--hh-card:#141E29;--hh-ghost:rgba(148,163,184,.2);--hh-hover:#6EE7B7;
+        }
+        html[data-skin="areia"]{
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:4 120 87;--brand-500:4 120 87;--brand-600:4 120 87;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:4 120 87;
+            --slate-200:21 32 43;--slate-300:51 65 85;--slate-400:82 97 112;--slate-500:100 116 139;--slate-700:203 213 225;--slate-800:226 232 240;--slate-900:237 242 247;--slate-950:241 245 249;
+            --bg:#F8FAFC;--ink:#15202B;--ink2:#526170;--gold:#047857;--on:#FFFFFF;--panel:#FFFFFF;--line:rgba(15,23,42,.14);--nav:rgba(248,250,252,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(1.1);--hh-card:#FFFFFF;--hh-ghost:rgba(15,23,42,.14);--hh-hover:#6EE7B7;
+        }
+        html[data-skin="nevoa"]{
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:56 189 248;--brand-500:56 189 248;--brand-600:56 189 248;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:56 189 248;
+            --slate-200:226 232 240;--slate-300:203 213 225;--slate-400:166 182 204;--slate-500:138 157 182;--slate-700:52 72 99;--slate-800:35 53 78;--slate-900:20 34 56;--slate-950:14 27 46;
+            --bg:#0B1423;--ink:#F1F5F9;--ink2:#A6B6CC;--gold:#38BDF8;--on:#082032;--panel:#142238;--line:rgba(148,163,184,.22);--nav:rgba(11,20,35,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.22);--hh-card:#142238;--hh-ghost:rgba(148,163,184,.22);--hh-hover:#6EE7B7;
+        }
+        html[data-skin="grafite"]{
+            --brand-50:236 253 245;--brand-100:209 250 229;--brand-300:110 231 183;--brand-400:163 230 53;--brand-500:163 230 53;--brand-600:163 230 53;--brand-700:5 150 105;--brand-900:6 78 59;--brand-accent:5 150 105;--brand-purple:163 230 53;
+            --slate-200:229 229 229;--slate-300:212 212 212;--slate-400:179 179 179;--slate-500:163 163 163;--slate-700:64 64 64;--slate-800:48 48 48;--slate-900:32 32 32;--slate-950:25 25 25;
+            --bg:#151515;--ink:#F5F5F5;--ink2:#B3B3B3;--gold:#A3E635;--on:#1A2606;--panel:#202020;--line:rgba(255,255,255,.15);--nav:rgba(21,21,21,.94);--spot:rgba(255,255,255,.04);--hero-filter:grayscale(1) brightness(.25);--hh-card:#202020;--hh-ghost:rgba(255,255,255,.15);--hh-hover:#6EE7B7;
+        }
+        /* regras do tema Sage lidas das variáveis (no padrão ficam idênticas às originais) */
+        body.sage{background:var(--bg);color:var(--ink)}
+        .sage .glass-panel{background-color:var(--panel);border-color:var(--line);background-image:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px),var(--spot),transparent 70%)}
+        .sage .glass-nav{background:var(--nav);border-bottom-color:var(--line)}
+        .sage .text-white{color:var(--ink)}
+        .sage .text-white.bg-brand-600,.sage .text-white.bg-gradient-to-r,.sage .text-white.bg-gradient-to-tr,.sage .text-white.bg-emerald-500,.sage .bg-brand-600 .text-white{color:var(--on)}
+        .sage header .bg-clip-text{-webkit-text-fill-color:var(--ink);color:var(--ink)}
+        .sage header a.bg-gradient-to-r{background-color:rgb(var(--brand-600))}
+        .sage ::-webkit-scrollbar-track{background:var(--bg)}
+        .sage ::-webkit-scrollbar-thumb{background:rgb(var(--slate-700))}
+        .sage footer,.sage #caseModal .glass-panel{color:var(--ink)}
+        .glow-effect::before{background-image:linear-gradient(45deg,rgb(var(--brand-400)),rgb(var(--brand-accent)),rgb(var(--brand-300)),rgb(var(--brand-400)))}
+        .hh{--hh-bg:var(--bg);--hh-ink:var(--ink);--hh-ink2:var(--ink2);--hh-gold:var(--gold)}
+        .hh-hand{filter:var(--hero-filter);transition:filter .6s ease}
+        .hh-btn{color:var(--on)}
+        .hh-btn:hover{background:var(--hh-hover)}
+        .hh-btn.is-ghost{color:var(--hh-ink);border-color:var(--hh-ghost)}
+        .hh-btn.is-ghost:hover{background:color-mix(in srgb,var(--hh-ink) 9%,transparent)}
+        .hh-card{background:var(--hh-card);border-color:var(--line)}
+        html.wg-fade,html.wg-fade *{transition:background-color .55s ease,color .55s ease,border-color .55s ease,fill .55s ease,stroke .55s ease !important}
+        /* foco visível e campos de formulário */
+        :focus-visible{outline:2px solid rgb(var(--brand-400));outline-offset:3px}
+        .sage input:focus,.sage select:focus,.sage textarea:focus{outline:none;border-color:rgb(var(--brand-400));box-shadow:0 0 0 4px color-mix(in srgb,rgb(var(--brand-400)) 24%,transparent)}
+        /* barra de progresso de leitura */
+        .wg-progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:51;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,rgb(var(--brand-400)),var(--gold));pointer-events:none}
+        /* cabeçalho que encolhe e menu que acompanha a seção */
+        header>div:first-child{transition:height .35s cubic-bezier(.16,1,.3,1)}
+        header.wg-scrolled>div:first-child{height:4rem}
+        header.glass-nav{transition:box-shadow .35s ease}
+        header.wg-scrolled{box-shadow:0 14px 34px -22px rgba(0,0,0,.5)}
+        nav a[data-hh="nav"]{position:relative}
+        nav a[data-hh="nav"]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+        nav a[data-hh="nav"]:hover::after,nav a[data-hh="nav"].is-active::after{transform:scaleX(1)}
+        nav a[data-hh="nav"].is-active{color:rgb(var(--brand-400))}
+        /* ornamento nos títulos de seção e fio de luz entre seções */
+        section span.text-xs.font-bold.uppercase.tracking-widest::before,.text-center>span.text-xs.font-bold.uppercase.tracking-widest::after{content:"";display:inline-block;width:26px;height:1px;background:currentColor;opacity:.6;vertical-align:middle}
+        section span.text-xs.font-bold.uppercase.tracking-widest::before{margin-right:.75rem}
+        .text-center>span.text-xs.font-bold.uppercase.tracking-widest::after{margin-left:.75rem}
+        #stacks::before,#cases::before,#diferenciais::before,#contato::before{content:"";position:absolute;top:0;left:50%;width:min(640px,80%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55;pointer-events:none}
+        /* botões: brilho que varre, elevação e clique com mola */
+        .wg-btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.16,1,.3,1),translate .3s cubic-bezier(.16,1,.3,1),scale .2s ease,box-shadow .3s ease,opacity .2s ease,background-color .25s ease}
+        .wg-btn::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.38) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+        .wg-btn:hover::after{transform:translateX(120%)}
+        .wg-btn:hover{translate:0 -2px;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+        .hh-btn.wg-btn:hover{translate:0 0}
+        .wg-btn:active{scale:.97;translate:0 0}
+        .filter-btn{transition:translate .25s ease,scale .2s ease,background-color .25s ease,color .25s ease}
+        .filter-btn:hover{translate:0 -2px}.filter-btn:active{scale:.96}
+        /* cards que levantam (propriedade translate não briga com o FLIP do filtro) */
+        .project-card,#stacks .glass-panel,#diferenciais .glass-panel{transition:translate .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease,border-color .3s ease,opacity .3s ease}
+        .project-card:hover,#stacks .glass-panel:hover,#diferenciais .glass-panel:hover{translate:0 -6px;box-shadow:0 28px 50px -30px rgba(0,0,0,.5)}
+        /* dock: skins, voltar ao topo e WhatsApp */
+        .wg-dock{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:45;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+        .wg-fab{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:rgb(var(--brand-600));color:var(--on);box-shadow:0 12px 28px -12px rgba(0,0,0,.55);transition:translate .3s cubic-bezier(.16,1,.3,1),scale .2s ease,opacity .3s ease,box-shadow .3s ease}
+        .wg-fab:hover{translate:0 -3px;box-shadow:0 18px 34px -14px rgba(0,0,0,.6)}.wg-fab:active{scale:.94}
+        .wg-wa{background:linear-gradient(135deg,#10b981,#0d9488);color:#fff;font-size:22px}
+        .wg-top{opacity:0;translate:0 12px;pointer-events:none}
+        .wg-top.show{opacity:1;translate:0 0;pointer-events:auto}
+        .wg-top svg{position:absolute;inset:0;width:100%;height:100%;rotate:-90deg}
+        .wg-top .wg-ring{transition:stroke-dashoffset .2s linear}
+        .wg-top i{font-size:15px}
+        .wg-skin{position:relative}
+        .wg-skin-list{position:absolute;right:58px;bottom:4px;display:flex;gap:10px;padding:8px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform-origin:100% 50%;scale:.85;opacity:0;pointer-events:none;transition:scale .35s cubic-bezier(.16,1,.3,1),opacity .25s ease}
+        .wg-skin.open .wg-skin-list{scale:1;opacity:1;pointer-events:auto}
+        .wg-skin-list button{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--sw) 50%,var(--sw2) 50%);border:1px solid var(--line);transition:scale .2s ease,box-shadow .2s ease}
+        .wg-skin-list button:hover{scale:1.12}
+        .wg-skin-list button[aria-checked="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}
+        @media (prefers-reduced-motion:reduce){
+            .wg-btn::after{display:none}
+            .wg-btn,.wg-fab,.filter-btn,.project-card,#stacks .glass-panel,#diferenciais .glass-panel,.wg-skin-list,header>div:first-child,nav a[data-hh="nav"]::after{transition:none !important}
+        }
+    </style>
     <style id="responsive-plans">
         /* A hero mantém vídeo, texto e indicadores no mesmo palco em qualquer tela. */
         section[id] { scroll-margin-top: 96px; }
@@ -401,6 +482,26 @@
             .plan-description { min-height: 0; }
         }
         @media (prefers-reduced-motion: reduce) { .plan-cta { transition: none; } }
+    </style>
+
+    <style id="color-refinements">
+        body { background: var(--bg); color: var(--ink); }
+        .hh-btn { background: rgb(var(--brand-600)); color: var(--on); }
+        .hh-btn.is-ghost { background: transparent; color: var(--ink); }
+        .hh-dot { background: rgb(var(--brand-400)); }
+        .hh-hand { background: radial-gradient(ellipse at 64% 66%, rgba(52,211,153,.1), transparent 58%); }
+        .hh-v { mix-blend-mode: luminosity; }
+        .plan-card.featured { border-color: rgb(var(--brand-400)); }
+        .plan-tag { color: rgb(var(--brand-400)); }
+        .plan-cta { background: rgb(var(--brand-600)); border-color: rgb(var(--brand-600)); color: var(--on); }
+        .plan-cta:hover { background: transparent; color: var(--ink); }
+        .plan-features li::before { color: rgb(var(--brand-400)); }
+        .sage #stacks .glass-panel > i { color: rgb(var(--brand-400)); }
+        .sage header a.bg-gradient-to-r { color: var(--on); }
+        .wg-wa { background: rgb(var(--brand-600)); color: var(--on); }
+        .sage .glow-effect::before { background-image: linear-gradient(45deg, #34D399, #059669, #6EE7B7); }
+        .sage input, .sage select, .sage textarea { color-scheme: dark; }
+        html[data-skin="areia"] .sage input, html[data-skin="areia"] .sage select, html[data-skin="areia"] .sage textarea { color-scheme: light; }
     </style>
 </head>
 <body class="sage antialiased selection:bg-brand-500 selection:text-white">
